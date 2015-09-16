@@ -7,7 +7,8 @@ package poo2015.proyecto_1;
 
 /**
  *
- * @author David sela come toda
+ * @author David - 2014004725
+ *         Arturo - 2014110993
  */
 public class POO2015Proyecto_1 {
 
