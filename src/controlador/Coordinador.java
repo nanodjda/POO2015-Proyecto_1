@@ -6,6 +6,7 @@
 
 package controlador;
 
+import vista.Items.AgregarItem;
 import modelo.Logica;
 import vista.*;
 
@@ -18,13 +19,18 @@ public class Coordinador {
     /************** Variables **************/
     private Logica logica;
     private VentanaPrincipal miVentanaPrincipal;
-    private VentanaItems miVentanaItems;
-    private VentanaTipo miVentanaTipo;
+    
     private VentanaAdminItems miVentanaAdminItems;
+    private AgregarItem miAgregarItem;
+    private EditarItems miEditarItems;
+    private EliminarItem miEliminarItem;
+    private MostrarItem miMostrarItem;
+    
     private VentanaAdminTipos miVentanaAdminTipos;
+    private VentanaTipo miVentanaTipo;
+    
     private VentanaAdminCate miVentanaAdminCate;
     private VentanaAdminPersonas miVentanaAdminPersonas;
-    private AgregarItem miAgregarItem;
     
     /************* Constructor *************/
 
@@ -47,12 +53,12 @@ public class Coordinador {
         this.miVentanaPrincipal = miVentanaPrincipal;
     }
 
-    public VentanaItems getMiVentanaItems() {
-        return miVentanaItems;
+    public EditarItems getMiEditarItems() {
+        return miEditarItems;
     }
 
-    public void setMiVentanaItems(VentanaItems miVentanaItems) {
-        this.miVentanaItems = miVentanaItems;
+    public void setMiEditarItems(EditarItems miEditarItems) {
+        this.miEditarItems = miEditarItems;
     }
 
     public VentanaTipo getMiVentanaTipo() {
@@ -103,4 +109,20 @@ public class Coordinador {
         this.miAgregarItem = miAgregarItem;
     }
 
+    public EliminarItem getMiEliminarItem() {
+        return miEliminarItem;
+    }
+
+    public void setMiEliminarItem(EliminarItem miEliminarItem) {
+        this.miEliminarItem = miEliminarItem;
+    }
+
+    public MostrarItem getMiMostrarItem() {
+        return miMostrarItem;
+    }
+
+    public void setMiMostrarItem(MostrarItem miMostrarItem) {
+        this.miMostrarItem = miMostrarItem;
+    }
+   
 }

@@ -6,12 +6,14 @@
 
 package vista;
 
+import controlador.Principal;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -24,7 +26,6 @@ public class VentanaAdminItems extends VentanaBase{
     
     /************* Constructor *************/
     public VentanaAdminItems(){
-        
         JLabel titulo = new JLabel("Items");
         titulo.setForeground(new Color(159, 227, 255));
         titulo.setFont(new Font("Arial", Font.BOLD, 34));
@@ -45,7 +46,13 @@ public class VentanaAdminItems extends VentanaBase{
         modificar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                miCoordinador.getMiVentanaPrincipal().setPrincipal(miCoordinador.getMiVentanaItems());
+                try {
+                    if(Principal.getItems().isEmpty()){ throw new Exception("No hay items agregados.");}
+                    miCoordinador.getMiEditarItems().iniciar();
+                    miCoordinador.getMiVentanaPrincipal().setPrincipal(miCoordinador.getMiEditarItems());
+                } catch (Exception c) {
+                    JOptionPane.showMessageDialog(miCoordinador.getMiVentanaPrincipal(), c.getMessage());
+                }
             }
         });
         add(modificar);
@@ -54,7 +61,13 @@ public class VentanaAdminItems extends VentanaBase{
         borrar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                miCoordinador.getMiVentanaPrincipal().setPrincipal(miCoordinador.getMiVentanaItems());
+                try {
+                    if(Principal.getItems().isEmpty()){ throw new Exception("No hay items agregados.");}
+                    miCoordinador.getMiEliminarItem().iniciar();
+                    miCoordinador.getMiVentanaPrincipal().setPrincipal(miCoordinador.getMiEliminarItem());
+                } catch (Exception c) {
+                    JOptionPane.showMessageDialog(miCoordinador.getMiVentanaPrincipal(), c.getMessage());
+                }
             }
         });
         add(borrar);
@@ -63,7 +76,13 @@ public class VentanaAdminItems extends VentanaBase{
         consultar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                miCoordinador.getMiVentanaPrincipal().setPrincipal(miCoordinador.getMiVentanaItems());
+                try {
+                    if(Principal.getItems().isEmpty()){ throw new Exception("No hay items agregados.");}
+                    miCoordinador.getMiMostrarItem().iniciar();
+                    miCoordinador.getMiVentanaPrincipal().setPrincipal(miCoordinador.getMiMostrarItem());
+                } catch (Exception c) {
+                    JOptionPane.showMessageDialog(miCoordinador.getMiVentanaPrincipal(), c.getMessage());
+                }
             }
         });
         add(consultar);

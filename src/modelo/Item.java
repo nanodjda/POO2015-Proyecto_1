@@ -20,8 +20,7 @@ public class Item {
     private String descripcion = "Sin descripcion";
     private String tipo;
     private ArrayList<String> categorias = new ArrayList<String>();
-    private boolean estado = false;
-    
+    private boolean estado = false;    
             
     /************* Constructor *************/
     public Item(String pNombre, String pCodigo, String pTipo){
@@ -79,5 +78,15 @@ public class Item {
     public void setEstado(boolean estado) {
         this.estado = estado;
     }
+    public ArrayList<String> getCategorias() {
+        return categorias;
+    }
+
+    public String getTipo() {
+        return tipo;
+    }
     
+    public void setTipo(String pTipo){
+        this.tipo = pTipo;
+    }
 }

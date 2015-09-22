@@ -6,11 +6,13 @@
 
 package vista;
 
+import java.awt.BorderLayout;
 import java.awt.SystemColor;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.net.URL;
 import javax.imageio.ImageIO;
+import javax.swing.JButton;
 import javax.swing.JPanel;
 
 /**
@@ -20,20 +22,20 @@ import javax.swing.JPanel;
 public class PanelConFondo extends JPanel{
 
     /************** Variables **************/
-   
+    
     /************* Constructor *************/
     public PanelConFondo(String pURLImagen){
         setForeground(SystemColor.controlHighlight);
-		try {
-			URL imagen = PanelConFondo.class.getResource("imagenes/" + pURLImagen);
-                        BufferedImage img = ImageIO.read(imagen);
-			BgBorder borde = new BgBorder( img );
-			setBorder(borde);
-		} catch (IOException e) {
-			System.out.println(e);
-		}
+        try {
+            URL imagen = PanelConFondo.class.getResource("imagenes/" + pURLImagen);
+            BufferedImage img = ImageIO.read(imagen);
+            BgBorder borde = new BgBorder( img );
+            setBorder(borde);
+        } catch (IOException e) {
+            System.out.println("Error al cargar la imagen");
+        }
 
-		setLayout(null);
+        setLayout(null);
     }
     
     /****************Metodos****************/

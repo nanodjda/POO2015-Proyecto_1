@@ -6,6 +6,7 @@
 
 package controlador;
 
+import vista.Items.AgregarItem;
 import java.awt.Font;
 import java.util.ArrayList;
 import modelo.Logica;
@@ -28,13 +29,16 @@ public class Principal {
     Logica logica;
     Coordinador coordinador;
     VentanaPrincipal ventanaPrincipal;
-    VentanaItems ventanaItems;
     VentanaTipo ventanaTipo;
     VentanaAdminItems ventanaAdminItems;
+    AgregarItem ventanaAgregarItem;
+    EditarItems ventanaEditarItems;
+    EliminarItem ventanaEliminarItem;
+    MostrarItem ventanaMostrarItem;
+    
     VentanaAdminTipos ventanaAdminTipos;
     VentanaAdminCate ventanaAdminCate;
     VentanaAdminPersonas ventanaAdminPersonas;
-    AgregarItem ventanaAgregarItem;
     int alto, ancho;
     
     /************* Constructor *************/
@@ -43,6 +47,7 @@ public class Principal {
     */
 public static void main(String[] args) {
     Principal miPrincipal=new Principal();
+    miPrincipal.setTipo("Default");
     miPrincipal.setTipo("Primero");
     miPrincipal.setTipo("Segundo");
     miPrincipal.setTipo("Uno mas");
@@ -61,37 +66,46 @@ public static void main(String[] args) {
 private void iniciarVentanas() {
     /*Se instancian las clases*/
     ventanaPrincipal=new VentanaPrincipal(900, 500);
-    ventanaItems = new VentanaItems();
     ventanaTipo = new VentanaTipo();
     ventanaAdminItems = new VentanaAdminItems();
+    ventanaEditarItems = new EditarItems();
+    ventanaAgregarItem = new AgregarItem();
+    ventanaEliminarItem = new EliminarItem();
+    ventanaMostrarItem = new MostrarItem();
+    
     ventanaAdminTipos = new VentanaAdminTipos();
     ventanaAdminCate = new VentanaAdminCate();
     ventanaAdminPersonas = new VentanaAdminPersonas();
-    ventanaAgregarItem = new AgregarItem();
     logica=new Logica();
     
     coordinador= new Coordinador();
 
     /*Se establecen las relaciones entre clases*/
     ventanaPrincipal.setCoordinador(coordinador);
-    ventanaItems.setCoordinador(coordinador);
     ventanaTipo.setCoordinador(coordinador);
     ventanaAdminItems.setCoordinador(coordinador);
+    ventanaAgregarItem.setCoordinador(coordinador);
+    ventanaEditarItems.setCoordinador(coordinador);
+    ventanaEliminarItem.setCoordinador(coordinador);
+    ventanaMostrarItem.setCoordinador(coordinador);
+    
     ventanaAdminTipos.setCoordinador(coordinador);
     ventanaAdminCate.setCoordinador(coordinador);
     ventanaAdminPersonas.setCoordinador(coordinador);
-    ventanaAgregarItem.setCoordinador(coordinador);
     logica.setCoordinador(coordinador);
 
     /*Se establecen relaciones con la clase coordinador*/
     coordinador.setMiVentanaPrincipal(ventanaPrincipal);
-    coordinador.setMiVentanaItems(ventanaItems);
-    coordinador.setMiVentanaTipo(ventanaTipo);
     coordinador.setMiVentanaAdminItems(ventanaAdminItems);
+    coordinador.setMiEditarItems(ventanaEditarItems);
+    coordinador.setMiAgregarItem(ventanaAgregarItem);
+    coordinador.setMiEliminarItem(ventanaEliminarItem);
+    coordinador.setMiMostrarItem(ventanaMostrarItem);
+    
+    coordinador.setMiVentanaTipo(ventanaTipo);
     coordinador.setMiVentanaAdminTipos(ventanaAdminTipos);
     coordinador.setMiVentanaAdminCate(ventanaAdminCate);
     coordinador.setMiVentanaAdminPersonas(ventanaAdminPersonas);
-    coordinador.setMiAgregarItem(ventanaAgregarItem);
     coordinador.setMiLogica(logica);
 
     ventanaPrincipal.setVisible(true);

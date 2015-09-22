@@ -35,7 +35,7 @@ public class VentanaAdminTipos extends VentanaBase{
         crear.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                miCoordinador.getMiVentanaPrincipal().setPrincipal(miCoordinador.getMiVentanaItems());
+                miCoordinador.getMiVentanaPrincipal().setPrincipal(miCoordinador.getMiEditarItems());
             }
         });
         add(crear);
@@ -44,7 +44,7 @@ public class VentanaAdminTipos extends VentanaBase{
         modificar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                miCoordinador.getMiVentanaPrincipal().setPrincipal(miCoordinador.getMiVentanaItems());
+                miCoordinador.getMiVentanaPrincipal().setPrincipal(miCoordinador.getMiEditarItems());
             }
         });
         add(modificar);
@@ -53,7 +53,7 @@ public class VentanaAdminTipos extends VentanaBase{
         borrar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                miCoordinador.getMiVentanaPrincipal().setPrincipal(miCoordinador.getMiVentanaItems());
+                miCoordinador.getMiVentanaPrincipal().setPrincipal(miCoordinador.getMiEditarItems());
             }
         });
         add(borrar);
@@ -62,7 +62,7 @@ public class VentanaAdminTipos extends VentanaBase{
         consultar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                miCoordinador.getMiVentanaPrincipal().setPrincipal(miCoordinador.getMiVentanaItems());
+                miCoordinador.getMiVentanaPrincipal().setPrincipal(miCoordinador.getMiEditarItems());
             }
         });
         add(consultar);

@@ -22,19 +22,19 @@ public class BotonFondo extends JButton{
     private int x, y, ancho, alto;
     
     /************* Constructor *************/
-//    public BotonFondo(String pNombre, String pURLImagen, int pAncho, int pAlto){
-//        super(pNombre);
-//        ImageIcon icon = new ImageIcon(getClass().getResource("/vista/imagenes/" + pURLImagen));
-//        Image img = icon.getImage();
-//        Image newimg = img.getScaledInstance(pAncho, pAlto, Image.SCALE_SMOOTH) ;  
-//        icon = new ImageIcon( newimg );
-//        
-//        this.setIcon(icon);
-//        this.setContentAreaFilled(false);
-//        this.setBorderPainted(false);
-//        this.setForeground(Color.red);
-//        this.setCursor(new Cursor(Cursor.HAND_CURSOR));
-//    }
+    public BotonFondo(String pNombre, String pURLImagen, int pAncho, int pAlto){
+        super(pNombre);
+        ImageIcon icon = new ImageIcon(getClass().getResource("/vista/imagenes/" + pURLImagen));
+        Image img = icon.getImage();
+        Image newimg = img.getScaledInstance(pAncho, pAlto, Image.SCALE_SMOOTH) ;  
+        icon = new ImageIcon( newimg );
+        
+        this.setIcon(icon);
+        this.setContentAreaFilled(false);
+        this.setBorderPainted(false);
+        this.setForeground(Color.red);
+        this.setCursor(new Cursor(Cursor.HAND_CURSOR));
+    }
     
     public BotonFondo(String pURLImagen, int x, int y, int pAncho, int pAlto){
         ImageIcon icon = new ImageIcon(getClass().getResource("/vista/imagenes/" + pURLImagen));

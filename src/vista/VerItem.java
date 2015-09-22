@@ -6,30 +6,30 @@
 
 package vista;
 
+import controlador.Principal;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import javax.swing.JButton;
-import javax.swing.JLabel;
-import javax.swing.JTextField;
-import controlador.Principal;
 import java.util.List;
 import javax.swing.DefaultListModel;
+import javax.swing.JButton;
 import javax.swing.JComboBox;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
-import javax.swing.ListSelectionModel;
+import javax.swing.JTextField;
 import modelo.Item;
-import vista.controles.*;
+import vista.controles.PLabel;
 
 /**
  *
- * @author David 19/09/2015
+ * @author David 22/09/2015
  */
-public class AgregarItem extends VentanaBase{
+public class VerItem extends VentanaEmergente{
 
     /************** Variables **************/
     private JTextField txtNombre, txtCodigo;
@@ -37,11 +37,12 @@ public class AgregarItem extends VentanaBase{
     private JComboBox cmbTipo;
     private JScrollPane scrCate;
     private JList cmbCate;
-    private JButton agregar;
+    private JButton aceptar;
     
     /************* Constructor *************/
-    public AgregarItem(){
-        JLabel titulo = new JLabel("Agregar Item");
+    public VerItem(JFrame frame, String title, int ancho, int alto, Item pItem){
+        super(frame, title, ancho, alto);
+        JLabel titulo = new JLabel("Ver Item");
         titulo.setForeground(new Color(159, 227, 255));
         titulo.setFont(new Font("Arial", Font.BOLD, 25));
         
@@ -50,14 +51,20 @@ public class AgregarItem extends VentanaBase{
         JLabel lblDescri = new PLabel("Descripción:");
         JLabel lblTipo = new PLabel("Tipo:");
         JLabel lblCate = new PLabel("Categorías:");
-        txtNombre = new JTextField(20);
-        txtCodigo = new JTextField(20);
-        txtDescr = new JTextArea();
+        
+        txtNombre = new JTextField(pItem.getNombre(), 20);
+        txtCodigo = new JTextField(pItem.getCodigo(), 20);
+        txtDescr = new JTextArea(pItem.getDescripcion());
         JScrollPane scrDescr = new JScrollPane(txtDescr);
         cmbTipo = new JComboBox(Principal.getTipos().toArray());
-        cmbCate = new JList(Principal.getCategorias().toArray());
-        cmbCate.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
+        cmbTipo.setSelectedItem(pItem.getTipo());
+        DefaultListModel model = new DefaultListModel();
+        for(String str : pItem.getCategorias()) {
+            model.addElement(str);
+        }
+        cmbCate = new JList(model);
         scrCate = new JScrollPane();
+        scrCate.setViewportView(cmbCate);
         
         titulo.setBounds(250, 15, 350, 50);
         lblNombre.setBounds(38, 100, 80, 30);
@@ -71,32 +78,21 @@ public class AgregarItem extends VentanaBase{
         lblCate.setBounds(10, 290, 80, 30);
         scrCate.setBounds(110, 290, 150, 100);
         
-        agregar = new JButton("Agregar");
-        agregar.setBounds(540, 450, 100, 30);
+        aceptar = new JButton("Aceptar");
+        aceptar.setBounds(540, 450, 100, 30);
         
-        agregar.addActionListener(new ActionListener() {
+        aceptar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                try {
-                    validar();
-                    Item nuevo = new Item(txtNombre.getText(), txtCodigo.getText(), cmbTipo.getSelectedItem().toString());
-                    if(!txtDescr.getText().equals("")){
-                        nuevo.setDescripcion(txtDescr.getText());
-                    }
-                    List<String> selectedValuesList = cmbCate.getSelectedValuesList();
-                    for(String str : selectedValuesList){
-                        nuevo.agregarCategoria(str);
-                    }
-                    Principal.setItem(nuevo);
-                    JOptionPane.showMessageDialog(miCoordinador.getMiVentanaPrincipal(), "El item fue agregado correctamente");
-                    miCoordinador.getMiVentanaPrincipal().setPrincipal(miCoordinador.getMiVentanaAdminItems());
-                } catch (Exception c) {                    
-                    JOptionPane.showMessageDialog(null,c.getMessage(),
-                    "Advertencia",JOptionPane.WARNING_MESSAGE);
-                }
+                dispose();
             }
-        });        
+        });
         
+        txtNombre.enable(false);
+        txtCodigo.enable(false);
+        txtDescr.enable(false);
+        cmbTipo.enable(false);
+        cmbCate.enable(false);
         add(titulo);
         add(lblNombre);
         add(txtNombre);
@@ -108,27 +104,12 @@ public class AgregarItem extends VentanaBase{
         add(cmbTipo);
         add(lblCate);
         add(scrCate);
-        add(agregar);
+        add(aceptar);
+        
         
     }
     /****************Metodos****************/
-    public void limpiarComponentes(){
-        txtNombre.setText("");
-        txtCodigo.setText("");
-        txtDescr.setText("");
-        cmbTipo.removeAllItems();
-        for(String str : Principal.getTipos()) {
-            cmbTipo.addItem(str);
-        }
         
-        DefaultListModel model = new DefaultListModel();
-        for(String str : Principal.getCategorias()) {
-            model.addElement(str);
-        }
-        cmbCate = new JList(model);
-        scrCate.setViewportView(cmbCate);
-    }
-
     public void validar() throws Exception{
         if(txtNombre.getText().equals("")
                 || txtCodigo.getText().equals("")
@@ -137,4 +118,5 @@ public class AgregarItem extends VentanaBase{
         }
     }
     /*********** Getters/Setters ***********/
+
 }
