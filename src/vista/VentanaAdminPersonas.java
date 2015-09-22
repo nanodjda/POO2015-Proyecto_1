@@ -17,31 +17,30 @@ import javax.swing.JLabel;
  *
  * @author David 19/09/2015
  */
-public class VentanaAdminItems extends VentanaBase{
+public class VentanaAdminPersonas extends VentanaBase{
 
     /************** Variables **************/
     private JButton crear, modificar, borrar, consultar;
     
     /************* Constructor *************/
-    public VentanaAdminItems(){
+    public VentanaAdminPersonas(){
         
-        JLabel titulo = new JLabel("Items");
+        JLabel titulo = new JLabel("Personas");
         titulo.setForeground(new Color(159, 227, 255));
         titulo.setFont(new Font("Arial", Font.BOLD, 34));
-        titulo.setBounds(280, 25, 100, 50);
+        titulo.setBounds(250, 25, 200, 50);
         add(titulo);
         
-        crear = new BotonFondo("newItem.png", 100, 100, 150, 150);
+        crear = new BotonFondo("newPerson.png", 100, 100, 150, 150);
         crear.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                miCoordinador.getMiAgregarItem().limpiarComponentes();
-                miCoordinador.getMiVentanaPrincipal().setPrincipal(miCoordinador.getMiAgregarItem());
+                miCoordinador.getMiVentanaPrincipal().setPrincipal(miCoordinador.getMiVentanaItems());
             }
         });
         add(crear);
         
-        modificar = new BotonFondo("editItem.png", 400, 100, 150, 150);
+        modificar = new BotonFondo("editPerson.png", 400, 100, 150, 150);
         modificar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -50,7 +49,7 @@ public class VentanaAdminItems extends VentanaBase{
         });
         add(modificar);
         
-        borrar = new BotonFondo("deleteItem.png", 100, 300, 150, 150);
+        borrar = new BotonFondo("deletePerson.png", 100, 300, 150, 150);
         borrar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -59,7 +58,7 @@ public class VentanaAdminItems extends VentanaBase{
         });
         add(borrar);
         
-        consultar = new BotonFondo("searchItem.png", 400, 300, 150, 150);
+        consultar = new BotonFondo("searchPerson.png", 400, 300, 150, 150);
         consultar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {

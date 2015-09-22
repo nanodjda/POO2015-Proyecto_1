@@ -7,11 +7,16 @@
 package vista;
 
 import controlador.Coordinador;
+import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JMenuBar;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.ScrollPaneConstants;
 
 /**
  *
@@ -22,7 +27,7 @@ public class VentanaPrincipal extends JFrame{
     /************** Variables **************/
     private Coordinador miCoordinador;
     private PanelLateral lateral;
-    private JPanel principal;
+    private JScrollPane principal;
     private int ancho_lateral, ancho_principal, alto;
     
     /************* Constructor *************/
@@ -41,13 +46,16 @@ public class VentanaPrincipal extends JFrame{
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setTitle("La Cueva 2.0");
         
-        this.setJMenuBar(new BarraMenu());
+        JMenuBar barra = new BarraMenu();
+        this.setJMenuBar(barra);
         
         lateral = new PanelLateral(ancho_lateral, alto);
         lateral.setBounds(0, 0, ancho_lateral, alto);
         add(lateral);
         
-        principal = new VentanaBase();
+        JPanel base = new VentanaBase();
+        principal = new JScrollPane(base);
+        principal.setBorder(BorderFactory.createLineBorder(Color.yellow, 0));
         principal.setBounds(ancho_lateral, 0, ancho_principal, alto);
         add(principal);
                 
@@ -57,7 +65,6 @@ public class VentanaPrincipal extends JFrame{
             public void actionPerformed(ActionEvent e) {
                 setPrincipal(miCoordinador.getMiVentanaAdminItems());
             }
-            
         });
         lateral.agregarBoton(btnItems);
         
@@ -65,19 +72,46 @@ public class VentanaPrincipal extends JFrame{
 	btnTipo.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                setPrincipal(miCoordinador.getMiVentanaTipo());
+                setPrincipal(miCoordinador.getMiVentanaAdminTipos());
             }
         });
         lateral.agregarBoton(btnTipo);
         
-        JButton btnCategoria = new JButton("Tipo");
+        JButton btnCategoria = new JButton("Categoría");
 	btnCategoria.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                setPrincipal(miCoordinador.getMiVentanaAdminCate());
+            }
+        });
+        lateral.agregarBoton(btnCategoria);
+        
+        JButton btnPersona = new JButton("Persona");
+	btnPersona.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                setPrincipal(miCoordinador.getMiVentanaAdminPersonas());
+            }
+        });
+        lateral.agregarBoton(btnPersona);
+        
+        JButton btnPrestamo = new JButton("Préstamo");
+	btnPrestamo.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 setPrincipal(miCoordinador.getMiVentanaTipo());
             }
         });
-        lateral.agregarBoton(btnCategoria);
+        lateral.agregarBoton(btnPrestamo);
+        
+        JButton btnReporte = new JButton("Reportes");
+	btnReporte.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                setPrincipal(miCoordinador.getMiVentanaTipo());
+            }
+        });
+        lateral.agregarBoton(btnReporte);
         
     }
     
@@ -86,16 +120,27 @@ public class VentanaPrincipal extends JFrame{
         this.miCoordinador=miCoordinador;
     }
 
-    public JPanel getPrincipal() {
+    public JScrollPane getPrincipal() {
         return principal;
     }
 
     public void setPrincipal(JPanel pPrincipal) {
         this.remove(principal);
-        this.principal = pPrincipal;
+        JScrollPane scrollPane = new JScrollPane(pPrincipal, ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED, ScrollPaneConstants.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+        this.principal = scrollPane;
         this.principal.setBounds(ancho_lateral, 0, ancho_principal, alto);
+        principal.setBorder(BorderFactory.createLineBorder(Color.yellow, 0));
         this.add(this.principal);
         this.revalidate();
         this.repaint();
     }
+    
+    public void setLateral(PanelLateral pPanelNuevo){
+        this.remove(lateral);
+        this.lateral = pPanelNuevo;
+        lateral.setBounds(0, 0, ancho_lateral, alto);
+        this.add(this.lateral);
+        this.revalidate();
+        this.repaint();
+    }    
 }

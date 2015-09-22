@@ -6,29 +6,56 @@
 
 package modelo;
 
+import java.util.ArrayList;
+
 /**
- *
+ * @author Arturo 19/09/2015
  * @author David 17/09/2015
  */
 public class Prestamo {
 
     /************** Variables **************/
-    private String idPrestamo;
+    private final int idPrestamo;
+    private static int idGlobal = 0;
+    private Persona persona;
+    private ArrayList<Item> items = new ArrayList();
+    private Alerta alerta;
 
     /************* Constructor *************/
-    public Prestamo(String pIDPrestamo){
-        this.idPrestamo = pIDPrestamo;
+    public Prestamo(Persona pPersona){
+        persona = pPersona;
+        idGlobal += 1;
+        idPrestamo = idGlobal;
+       // persona.agregarPrestamo();
     }
 
     /****************Metodos****************/
 
     /*********** Getters/Setters ***********/
-    public String getIdPrestamo() {
+    public int getIdPrestamo() {
         return idPrestamo;
     }
 
-    public void setIdPrestamo(String idPrestamo) {
-        this.idPrestamo = idPrestamo;
+    public ArrayList<Item> getItems() {
+        return items;
+    }
+
+    public void agregarItem(Item pItem) {
+        items.add(pItem);
+        pItem.prestado();
     }
     
+    public void borrarItem(int pIndice) {
+        Item temp =items.get(pIndice);
+        temp.noPrestado();
+        items.remove(pIndice);
+    }
+
+    public Alerta getAlerta() {
+        return alerta;
+    }
+
+    public void setAlerta(Alerta alerta) {
+        this.alerta = alerta;
+    }    
 }

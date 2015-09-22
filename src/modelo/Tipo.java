@@ -7,7 +7,7 @@
 package modelo;
 
 /**
- *
+ * @author Arturo 18/09/2015
  * @author David 17/09/2015
  */
 public class Tipo {

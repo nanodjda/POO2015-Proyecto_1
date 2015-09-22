@@ -7,10 +7,7 @@
 package controlador;
 
 import modelo.Logica;
-import vista.VentanaAdminItems;
-import vista.VentanaItems;
-import vista.VentanaPrincipal;
-import vista.VentanaTipo;
+import vista.*;
 
 /**
  *
@@ -24,6 +21,11 @@ public class Coordinador {
     private VentanaItems miVentanaItems;
     private VentanaTipo miVentanaTipo;
     private VentanaAdminItems miVentanaAdminItems;
+    private VentanaAdminTipos miVentanaAdminTipos;
+    private VentanaAdminCate miVentanaAdminCate;
+    private VentanaAdminPersonas miVentanaAdminPersonas;
+    private AgregarItem miAgregarItem;
+    
     /************* Constructor *************/
 
     /****************Metodos****************/
@@ -69,4 +71,36 @@ public class Coordinador {
         this.miVentanaAdminItems = miVentanaAdminItems;
     }
     
+    public VentanaAdminTipos getMiVentanaAdminTipos() {
+        return miVentanaAdminTipos;
+    }
+
+    public void setMiVentanaAdminTipos(VentanaAdminTipos miVentanaAdminTipos) {
+        this.miVentanaAdminTipos = miVentanaAdminTipos;
+    }
+
+    public VentanaAdminCate getMiVentanaAdminCate() {
+        return miVentanaAdminCate;
+    }
+
+    public void setMiVentanaAdminCate(VentanaAdminCate miVentanaAdminCate) {
+        this.miVentanaAdminCate = miVentanaAdminCate;
+    }
+
+    public VentanaAdminPersonas getMiVentanaAdminPersonas() {
+        return miVentanaAdminPersonas;
+    }
+
+    public void setMiVentanaAdminPersonas(VentanaAdminPersonas miVentanaAdminPersonas) {
+        this.miVentanaAdminPersonas = miVentanaAdminPersonas;
+    }
+
+    public AgregarItem getMiAgregarItem() {
+        return miAgregarItem;
+    }
+
+    public void setMiAgregarItem(AgregarItem miAgregarItem) {
+        this.miAgregarItem = miAgregarItem;
+    }
+
 }

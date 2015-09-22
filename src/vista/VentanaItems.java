@@ -6,14 +6,8 @@
 
 package vista;
 
-import controlador.Coordinador;
-import java.awt.BorderLayout;
-import java.awt.Color;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
-import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.border.Border;
 
 /**
  *
@@ -41,12 +35,12 @@ public class VentanaItems extends VentanaBase{
                         (int) anch, (int) anch, (int) anch};
         gbl_principal.rowHeights = new int[] { (int) alt, (int) alt, (int) alt,
                         (int) alt, (int) alt};
-        gbl_principal.columnWeights = new double[] { 1.0, 1.0, 1.0, 1.0, 1.0};
-        gbl_principal.rowWeights = new double[]    { 1.0, 1.0, 1.0, 1.0, 1.0};
+        gbl_principal.columnWeights = new double[] { 1.0, 1.0, 1.0, 1.0, 1.0, 1.0};
+        gbl_principal.rowWeights = new double[]    { 1.0, 1.0, 1.0, 1.0, 1.0, 1.0};
         setLayout(gbl_principal);
         for(int x = 0; x < 5; x++ ){
-            for(int y = 0; y < 5; y++){
-                PanelConFondo nuevo = new PanelConFondo("item.jpg");
+            for(int y = 0; y < 6; y++){
+                PanelConFondo nuevo = new PanelConFondo("baseItem.jpg");
                 GridBagConstraints gbc = new GridBagConstraints();
 		gbc.anchor = GridBagConstraints.WEST;
 		gbc.fill = GridBagConstraints.BOTH;

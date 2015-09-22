@@ -6,8 +6,11 @@
 
 package modelo;
 
+import java.util.ArrayList;
+
 /**
- *
+ * @author Esteban 18/09/2015
+ * @author Arturo 18/09/2015
  * @author David 17/09/2015
  */
 public class Persona {
@@ -19,6 +22,7 @@ public class Persona {
     private String segundoApellido;
     protected String telefono;
     protected String correo;
+    private ArrayList<Prestamo> prestamos = new ArrayList();
  
     /************* Constructor *************/
     public Persona(String cedula, String nombre, String primerApellido, String segundoApellido) {
@@ -77,5 +81,17 @@ public class Persona {
 
     public void setCorreo(String correo) {
         this.correo = correo;
+    }
+
+    public ArrayList<Prestamo> getPrestamos() {
+        return prestamos;
+    }
+
+    public void agregarPrestamo(Prestamo pPrestamo) {
+        prestamos.add(pPrestamo);
+    }
+    
+    public void borrarPrestamo(int pIndice) {
+        prestamos.remove(pIndice);
     }
 }

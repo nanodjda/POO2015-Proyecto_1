@@ -6,8 +6,10 @@
 
 package modelo;
 
+import java.util.ArrayList;
+
 /**
- *
+ * @author Arturo 18/09/2015
  * @author David 17/09/2015
  */
 public class Item {
@@ -15,30 +17,47 @@ public class Item {
     /************** Variables **************/
     private String nombre;
     private String codigo;
-    private String descripcion;
+    private String descripcion = "Sin descripcion";
+    private String tipo;
+    private ArrayList<String> categorias = new ArrayList<String>();
     private boolean estado = false;
-    private String imagenURL;
     
             
     /************* Constructor *************/
-    public Item(String pNombre, String pCodigo, String pDescripcion){
+    public Item(String pNombre, String pCodigo, String pTipo){
         this.nombre = pNombre;
         this.codigo = pCodigo;
-        this.descripcion = pDescripcion;
+        this.tipo = pTipo;
     }
 
     /****************Metodos****************/
-    public void prestar() {
-        this.estado = false;
+    public void prestado() {
+        this.estado = true;
     }
 
-    public void dimitirPrestamo() {
-        this.estado = true;
+    public void noPrestado() {
+        this.estado = false;
+    }
+    
+    public void agregarCategoria(String pCategoria){
+        categorias.add(pCategoria);
+    }
+    
+    public void borrarCategoria(int pIndice){
+        categorias.remove(pIndice);
     }
     
     /*********** Getters/Setters ***********/
     public String getNombre() {
         return nombre;
+    }
+    
+    public String getDescripcion() {
+        return descripcion;
+    }
+    
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
     }
 
     public void setNombre(String nombre) {
@@ -53,14 +72,6 @@ public class Item {
         this.codigo = codigo;
     }
 
-    public String getDescripcion() {
-        return descripcion;
-    }
-
-    public void setDescripcion(String descripcion) {
-        this.descripcion = descripcion;
-    }
-
     public boolean getEstado() {
         return estado;
     }
@@ -68,13 +79,5 @@ public class Item {
     public void setEstado(boolean estado) {
         this.estado = estado;
     }
-
-    public String getImagenURL() {
-        return imagenURL;
-    }
-
-    public void setImagenURL(String imagenURL) {
-        this.imagenURL = imagenURL;
-    }
-  
+    
 }

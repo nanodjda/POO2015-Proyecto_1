@@ -6,7 +6,6 @@
 
 package vista;
 
-import controlador.Coordinador;
 import java.awt.SystemColor;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
@@ -21,7 +20,7 @@ import javax.swing.JPanel;
 public class PanelConFondo extends JPanel{
 
     /************** Variables **************/
-    
+   
     /************* Constructor *************/
     public PanelConFondo(String pURLImagen){
         setForeground(SystemColor.controlHighlight);
@@ -38,10 +37,6 @@ public class PanelConFondo extends JPanel{
     }
     
     /****************Metodos****************/
-    private void iniciar(){
-        
-    }
     
     /*********** Getters/Setters ***********/
-
 }
