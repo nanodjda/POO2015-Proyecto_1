@@ -60,7 +60,7 @@ public class VentanaPrincipal extends JFrame{
         principal.setBounds(ancho_lateral, 0, ancho_principal, alto);
         add(principal);
                 
-        JButton btnItems = new JButton("Items");
+        JButton btnItems = new JButton("Administrar Items");
 	btnItems.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {

@@ -6,7 +6,18 @@
 
 package vista.Prestamos;
 
+import controlador.Principal;
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JLabel;
+import modelo.Prestamo;
 import vista.VentanaBase;
+import vista.controles.PLabel;
 
 /**
  *
@@ -15,11 +26,49 @@ import vista.VentanaBase;
 public class MostrarPrestamo extends VentanaBase {
 
     /************** Variables **************/
-
+    JComboBox cmbPrestamos;
+    
     /************* Constructor *************/
-
+    public MostrarPrestamo(){
+        JLabel titulo = new JLabel("Mostrar Prestamo");
+        titulo.setForeground(new Color(159, 227, 255));
+        titulo.setFont(new Font("Arial", Font.BOLD, 25));
+        
+        PLabel leyenda1 = new PLabel("Seleccione el préstamo a mostrar:");
+        cmbPrestamos = new JComboBox();
+        JButton mostrar = new JButton("Mostrar");
+        mostrar.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                int pos = cmbPrestamos.getSelectedIndex();
+                new verPrestamo(miCoordinador.getMiVentanaPrincipal(), 
+                        "Mostrar Préstamo: " + Principal.getPrestamos().get(pos).getIdPrestamo(), 
+                        700, 550, Principal.getPrestamos().get(pos)).setVisible(true);
+            }
+        });
+        
+        leyenda1.setBounds(50, 50, 300, 30);
+        cmbPrestamos.setBounds(50, 90, 150, 30);
+        titulo.setBounds(250, 15, 350, 50);
+        mostrar.setBounds(300, 300, 100, 30);
+        
+        add(titulo);
+        add(leyenda1);
+        add(cmbPrestamos);
+        add(mostrar);
+    }
+    
     /****************Metodos****************/
-
+    public void iniciar(){
+        cmbPrestamos.removeAllItems();
+        ArrayList<String> var1 = new ArrayList<>();
+        for(Prestamo pre : Principal.getPrestamos()){
+            var1.add(String.valueOf(pre.getIdPrestamo()));
+        }
+        for(String str : var1) {
+            cmbPrestamos.addItem(str);
+        }
+    }
+    
     /*********** Getters/Setters ***********/
-
 }

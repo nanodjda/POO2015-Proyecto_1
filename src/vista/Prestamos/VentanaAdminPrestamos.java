@@ -77,8 +77,8 @@ public class VentanaAdminPrestamos extends VentanaBase {
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
-                    if(Principal.getPersonas().isEmpty()){
-                        throw new Exception("No hay personas para eliminar.");
+                    if(Principal.getPrestamos().isEmpty()){
+                        throw new Exception("No hay prestamos para eliminar.");
                     }
                     miCoordinador.getMiEliminarPrestamo().iniciar();
                     miCoordinador.getMiVentanaPrincipal().setPrincipal(miCoordinador.getMiEliminarPrestamo());
@@ -94,11 +94,11 @@ public class VentanaAdminPrestamos extends VentanaBase {
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
-                    if(Principal.getPersonas().isEmpty()){
-                        throw new Exception("No hay personas para eliminar.");
+                    if(Principal.getPrestamos().isEmpty()){
+                        throw new Exception("No hay prestamos para mostrar.");
                     }
-                    miCoordinador.getMiMostrarPersona().iniciar();
-                    miCoordinador.getMiVentanaPrincipal().setPrincipal(miCoordinador.getMiMostrarPersona());
+                    miCoordinador.getMiMostrarPrestamo().iniciar();
+                    miCoordinador.getMiVentanaPrincipal().setPrincipal(miCoordinador.getMiMostrarPrestamo());
                 } catch (Exception d) {
                     JOptionPane.showMessageDialog(miCoordinador.getMiVentanaPrincipal(), d.getMessage());
                 }

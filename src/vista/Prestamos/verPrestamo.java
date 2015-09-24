@@ -18,7 +18,6 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JList;
-import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 import modelo.Item;
@@ -29,9 +28,9 @@ import vista.controles.PLabel;
 
 /**
  *
- * @author David 23/09/2015
+ * @author David 24/09/2015
  */
-public class EditarPrestamo extends VentanaEmergente {
+public class verPrestamo extends VentanaEmergente {
 
     /************** Variables **************/
     private JList cmbItems;
@@ -43,16 +42,16 @@ public class EditarPrestamo extends VentanaEmergente {
 
     /************* Constructor *************/
     
-    public EditarPrestamo(JFrame frame, String title, int ancho, int alto, Prestamo pPrestamo) {
+    public verPrestamo(JFrame frame, String title, int ancho, int alto, Prestamo pPrestamo) {
         super(frame, title, ancho, alto);
         
-        JLabel titulo = new JLabel("Editar Prestamo");
+        JLabel titulo = new JLabel("ver Prestamo");
         titulo.setForeground(new Color(159, 227, 255));
         titulo.setFont(new Font("Arial", Font.BOLD, 25));
         
         DefaultListModel model = new DefaultListModel();
         for(Item ite : Principal.getItems()) {
-            if(ite.getEstado() == false || pPrestamo.getItems().contains(ite.getCodigo())){
+            if(pPrestamo.getItems().contains(ite.getCodigo())){
                 model.addElement(ite.getNombre());
                 items.put(pos, ite.getCodigo());
                 pos += 1;
@@ -78,30 +77,13 @@ public class EditarPrestamo extends VentanaEmergente {
         lblItems.setBounds(320, 100, 100, 30);
         scrItems.setBounds(320, 140, 100, 100);
         
-        JButton agregar = new JButton("Editar");
-        agregar.setBounds(540, 450, 100, 30);
+        JButton aceptar = new JButton("Aceptar");
+        aceptar.setBounds(540, 450, 100, 30);
         
-        agregar.addActionListener(new ActionListener() {
+        aceptar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                try {
-                    validar();
-                    for(String str : pPrestamo.getItems()){
-                        for(Item it : Principal.getItems()){
-                            if(it.getCodigo().equals(str)){
-                                it.noPrestado();
-                            }
-                        }
-                    }
-                    for(Integer x : cmbItems.getSelectedIndices()){
-                        pPrestamo.agregarItem(items.get(x).toString());
-                    }
-                    JOptionPane.showMessageDialog(getRootPane(), "El préstamo ha sido editado.");
-                    dispose();
-                } catch (Exception c) {                    
-                    JOptionPane.showMessageDialog(getRootPane(),c.getMessage(),
-                    "Advertencia",JOptionPane.WARNING_MESSAGE);
-                }
+                dispose();
             }
         });
         
@@ -110,7 +92,7 @@ public class EditarPrestamo extends VentanaEmergente {
         add(txtPersona);
         add(scrItems);
         add(lblItems);
-        add(agregar);
+        add(aceptar);
         
     }
     /*********** Getters/Setters ***********/
