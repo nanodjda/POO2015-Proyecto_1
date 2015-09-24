@@ -4,26 +4,20 @@
 * Esteban Chinchilla Fallas - 2014
 */
 
-package vista;
+package vista.Prestamos;
 
-import javax.swing.JButton;
+import vista.VentanaBase;
 
 /**
  *
- * @author David 19/09/2015
+ * @author David 22/09/2015
  */
-public class VentanaTipo extends VentanaBase{
+public class MostrarPrestamo extends VentanaBase {
 
     /************** Variables **************/
-    private JButton prueba = new JButton("prueba");
-    
+
     /************* Constructor *************/
-    public VentanaTipo() {
-        
-        prueba.setBounds(100, 100, 100, 100);
-        add(prueba);
-    }
-    
+
     /****************Metodos****************/
 
     /*********** Getters/Setters ***********/

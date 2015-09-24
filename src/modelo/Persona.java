@@ -16,13 +16,13 @@ import java.util.ArrayList;
 public class Persona {
 
     /************** Variables **************/
-    private String cedula;
+    private String cedula = "";
     private String nombre;
     private String primerApellido;
     private String segundoApellido;
-    protected String telefono;
-    protected String correo;
-    private ArrayList<Prestamo> prestamos = new ArrayList();
+    protected String telefono = "";
+    protected String correo = "";
+    private ArrayList<Integer> prestamos = new ArrayList();
  
     /************* Constructor *************/
     public Persona(String cedula, String nombre, String primerApellido, String segundoApellido) {
@@ -83,15 +83,19 @@ public class Persona {
         this.correo = correo;
     }
 
-    public ArrayList<Prestamo> getPrestamos() {
+    public ArrayList<Integer> getPrestamos() {
         return prestamos;
     }
 
-    public void agregarPrestamo(Prestamo pPrestamo) {
+    public void agregarPrestamo(int pPrestamo) {
         prestamos.add(pPrestamo);
     }
     
-    public void borrarPrestamo(int pIndice) {
-        prestamos.remove(pIndice);
+    public void borrarPrestamo(int pIDPrestamo) {
+        for(int i = 0; i < prestamos.size(); i++){
+            if(prestamos.get(i).equals(pIDPrestamo)){
+                prestamos.remove(i);
+            }
+        }
     }
 }

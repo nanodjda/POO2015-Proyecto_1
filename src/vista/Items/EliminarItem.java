@@ -4,7 +4,7 @@
 * Esteban Chinchilla Fallas - 2014
 */
 
-package vista;
+package vista.Items;
 
 import controlador.Principal;
 import java.awt.Color;
@@ -15,25 +15,28 @@ import java.util.ArrayList;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import modelo.Item;
+import vista.VentanaBase;
 import vista.controles.PLabel;
 
 /**
  *
  * @author David 22/09/2015
  */
-public class MostrarItem extends VentanaBase{
+public class EliminarItem extends VentanaBase{
+
     /************** Variables **************/
     JComboBox cmbItems;
     /************* Constructor *************/
-    public MostrarItem(){
-        JLabel titulo = new JLabel("Mostrar Item");
+    public EliminarItem(){
+        JLabel titulo = new JLabel("Eliminar Item");
         titulo.setForeground(new Color(159, 227, 255));
         titulo.setFont(new Font("Arial", Font.BOLD, 25));
         titulo.setBounds(250, 15, 350, 50);
         add(titulo);
         
-        PLabel leyenda1 = new PLabel("Seleccione el item a mostrar:");
+        PLabel leyenda1 = new PLabel("Seleccione el item a eliminar:");
         leyenda1.setBounds(50, 50, 250, 30);
         add(leyenda1);
        
@@ -41,17 +44,23 @@ public class MostrarItem extends VentanaBase{
         cmbItems.setBounds(50, 90, 150, 30);
         add(cmbItems);
         
-        JButton mostrar = new JButton("Mostrar");
-        mostrar.setBounds(300, 300, 100, 30);
-        mostrar.addActionListener(new ActionListener() {
+        JButton eliminar = new JButton("Eliminar");
+        eliminar.setBounds(300, 300, 100, 30);
+        eliminar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 int pos = cmbItems.getSelectedIndex();
-                new VerItem(miCoordinador.getMiVentanaPrincipal(), "Ver item", 
-                        700, 550, Principal.getItems().get(pos)).setVisible(true);
+                Principal.getItems().remove(pos);
+                JOptionPane.showMessageDialog(miCoordinador.getMiVentanaPrincipal(), "El item fue eliminado exitosamente.");
+                if(Principal.getItems().size() > 0){
+                    miCoordinador.getMiEliminarItem().iniciar();
+                    miCoordinador.getMiVentanaPrincipal().setPrincipal(miCoordinador.getMiEliminarItem());
+                } else {
+                    miCoordinador.getMiVentanaPrincipal().setPrincipal(miCoordinador.getMiVentanaAdminItems());
+                }
             }
         });
-        add(mostrar);
+        add(eliminar);
     }
     
     /****************Metodos****************/
@@ -68,4 +77,3 @@ public class MostrarItem extends VentanaBase{
     
     /*********** Getters/Setters ***********/
 }
-

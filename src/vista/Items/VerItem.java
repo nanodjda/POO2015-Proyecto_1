@@ -4,25 +4,24 @@
 * Esteban Chinchilla Fallas - 2014
 */
 
-package vista;
+package vista.Items;
 
 import controlador.Principal;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.List;
 import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JList;
-import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import modelo.Item;
+import vista.VentanaEmergente;
 import vista.controles.PLabel;
 
 /**
@@ -89,10 +88,14 @@ public class VerItem extends VentanaEmergente{
         });
         
         txtNombre.enable(false);
+        txtNombre.setDisabledTextColor(Color.black);
         txtCodigo.enable(false);
+        txtCodigo.setDisabledTextColor(Color.black);
         txtDescr.enable(false);
+        txtDescr.setDisabledTextColor(Color.black);
         cmbTipo.enable(false);
         cmbCate.enable(false);
+        
         add(titulo);
         add(lblNombre);
         add(txtNombre);

@@ -4,7 +4,7 @@
 * Esteban Chinchilla Fallas - 2014
 */
 
-package vista;
+package vista.Items;
 
 import controlador.Principal;
 import java.awt.Color;
@@ -15,51 +15,46 @@ import java.util.ArrayList;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import modelo.Item;
+import vista.VentanaBase;
 import vista.controles.PLabel;
 
 /**
  *
- * @author David 22/09/2015
+ * @author David 17/09/2015
  */
-public class EliminarItem extends VentanaBase{
+public class EditarItems extends VentanaBase{
 
     /************** Variables **************/
     JComboBox cmbItems;
     /************* Constructor *************/
-    public EliminarItem(){
-        JLabel titulo = new JLabel("Eliminar Item");
+    public EditarItems(){
+        JLabel titulo = new JLabel("Editar Item");
         titulo.setForeground(new Color(159, 227, 255));
         titulo.setFont(new Font("Arial", Font.BOLD, 25));
         titulo.setBounds(250, 15, 350, 50);
         add(titulo);
         
-        PLabel leyenda1 = new PLabel("Seleccione el item a eliminar:");
-        leyenda1.setBounds(50, 50, 250, 30);
+        PLabel leyenda1 = new PLabel("Seleccione el item a editar:");
+        leyenda1.setBounds(50, 50, 200, 30);
         add(leyenda1);
        
         cmbItems = new JComboBox();
         cmbItems.setBounds(50, 90, 150, 30);
         add(cmbItems);
         
-        JButton eliminar = new JButton("Eliminar");
-        eliminar.setBounds(300, 300, 100, 30);
-        eliminar.addActionListener(new ActionListener() {
+        JButton modificar = new JButton("Modificar");
+        modificar.setBounds(300, 300, 100, 30);
+        modificar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 int pos = cmbItems.getSelectedIndex();
-                Principal.getItems().remove(pos);
-                JOptionPane.showMessageDialog(miCoordinador.getMiVentanaPrincipal(), "El item fue eliminado exitosamente.");
-                if(Principal.getItems().size() > 0){
-                    miCoordinador.getMiEliminarItem().iniciar();
-                    miCoordinador.getMiVentanaPrincipal().setPrincipal(miCoordinador.getMiEliminarItem());
-                } else {
-                    miCoordinador.getMiVentanaPrincipal().setPrincipal(miCoordinador.getMiVentanaAdminItems());
-                }
+                new ModificarItems(miCoordinador.getMiVentanaPrincipal(), 
+                        "Modificar item: " + Principal.getItems().get(pos).getNombre(), 
+                        700, 550, Principal.getItems().get(pos)).setVisible(true);
             }
         });
-        add(eliminar);
+        add(modificar);
     }
     
     /****************Metodos****************/

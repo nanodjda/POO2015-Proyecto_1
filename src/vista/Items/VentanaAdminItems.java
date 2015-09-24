@@ -4,7 +4,7 @@
 * Esteban Chinchilla Fallas - 2014
 */
 
-package vista;
+package vista.Items;
 
 import controlador.Principal;
 import java.awt.Color;
@@ -14,6 +14,8 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import vista.BotonFondo;
+import vista.VentanaBase;
 
 /**
  *

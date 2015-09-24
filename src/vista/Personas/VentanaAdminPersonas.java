@@ -4,14 +4,18 @@
 * Esteban Chinchilla Fallas - 2014
 */
 
-package vista;
+package vista.Personas;
 
+import controlador.Principal;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import vista.BotonFondo;
+import vista.VentanaBase;
 
 /**
  *
@@ -35,7 +39,8 @@ public class VentanaAdminPersonas extends VentanaBase{
         crear.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                miCoordinador.getMiVentanaPrincipal().setPrincipal(miCoordinador.getMiEditarItems());
+                miCoordinador.getMiAgregarPersona().limpiar();
+                miCoordinador.getMiVentanaPrincipal().setPrincipal(miCoordinador.getMiAgregarPersona());
             }
         });
         add(crear);
@@ -44,7 +49,15 @@ public class VentanaAdminPersonas extends VentanaBase{
         modificar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                miCoordinador.getMiVentanaPrincipal().setPrincipal(miCoordinador.getMiEditarItems());
+                try {
+                    if(Principal.getPersonas().isEmpty()){
+                        throw new Exception("No hay personas para editar.");
+                    }
+                    miCoordinador.getMiModificarPersona().iniciar();
+                    miCoordinador.getMiVentanaPrincipal().setPrincipal(miCoordinador.getMiModificarPersona());
+                } catch (Exception d) {
+                    JOptionPane.showMessageDialog(miCoordinador.getMiVentanaPrincipal(), d.getMessage());
+                }
             }
         });
         add(modificar);
@@ -53,7 +66,15 @@ public class VentanaAdminPersonas extends VentanaBase{
         borrar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                miCoordinador.getMiVentanaPrincipal().setPrincipal(miCoordinador.getMiEditarItems());
+                try {
+                    if(Principal.getPersonas().isEmpty()){
+                        throw new Exception("No hay personas para eliminar.");
+                    }
+                    miCoordinador.getMiEliminarPersona().iniciar();
+                    miCoordinador.getMiVentanaPrincipal().setPrincipal(miCoordinador.getMiEliminarPersona());
+                } catch (Exception d) {
+                    JOptionPane.showMessageDialog(miCoordinador.getMiVentanaPrincipal(), d.getMessage());
+                }
             }
         });
         add(borrar);
@@ -62,7 +83,15 @@ public class VentanaAdminPersonas extends VentanaBase{
         consultar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                miCoordinador.getMiVentanaPrincipal().setPrincipal(miCoordinador.getMiEditarItems());
+                try {
+                    if(Principal.getPersonas().isEmpty()){
+                        throw new Exception("No hay personas para eliminar.");
+                    }
+                    miCoordinador.getMiMostrarPersona().iniciar();
+                    miCoordinador.getMiVentanaPrincipal().setPrincipal(miCoordinador.getMiMostrarPersona());
+                } catch (Exception d) {
+                    JOptionPane.showMessageDialog(miCoordinador.getMiVentanaPrincipal(), d.getMessage());
+                }
             }
         });
         add(consultar);

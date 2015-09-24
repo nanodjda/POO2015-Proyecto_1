@@ -45,6 +45,7 @@ public class VentanaPrincipal extends JFrame{
         setSize(ancho_lateral + ancho_principal + 15, alto + 60);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setTitle("La Cueva 2.0");
+        setResizable(false);
         
         JMenuBar barra = new BarraMenu();
         this.setJMenuBar(barra);
@@ -99,7 +100,7 @@ public class VentanaPrincipal extends JFrame{
 	btnPrestamo.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                setPrincipal(miCoordinador.getMiVentanaTipo());
+                setPrincipal(miCoordinador.getMiVentanaAdminPrestamos());
             }
         });
         lateral.agregarBoton(btnPrestamo);

@@ -4,7 +4,7 @@
 * Esteban Chinchilla Fallas - 2014
 */
 
-package vista;
+package vista.Tipos;
 
 import java.awt.Color;
 import java.awt.Font;
@@ -12,6 +12,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import vista.BotonFondo;
+import vista.VentanaBase;
 
 /**
  *
@@ -35,7 +37,8 @@ public class VentanaAdminTipos extends VentanaBase{
         crear.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                miCoordinador.getMiVentanaPrincipal().setPrincipal(miCoordinador.getMiEditarItems());
+                miCoordinador.getMiAgregarTipo().limpiar();
+                miCoordinador.getMiVentanaPrincipal().setPrincipal(miCoordinador.getMiAgregarTipo());
             }
         });
         add(crear);
@@ -44,7 +47,8 @@ public class VentanaAdminTipos extends VentanaBase{
         modificar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                miCoordinador.getMiVentanaPrincipal().setPrincipal(miCoordinador.getMiEditarItems());
+                miCoordinador.getMiModificarTipo().limpiar();
+                miCoordinador.getMiVentanaPrincipal().setPrincipal(miCoordinador.getMiModificarTipo());
             }
         });
         add(modificar);
@@ -53,7 +57,8 @@ public class VentanaAdminTipos extends VentanaBase{
         borrar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                miCoordinador.getMiVentanaPrincipal().setPrincipal(miCoordinador.getMiEditarItems());
+                miCoordinador.getMiEliminarTipo().limpiar();
+                miCoordinador.getMiVentanaPrincipal().setPrincipal(miCoordinador.getMiEliminarTipo());
             }
         });
         add(borrar);
@@ -62,7 +67,8 @@ public class VentanaAdminTipos extends VentanaBase{
         consultar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                miCoordinador.getMiVentanaPrincipal().setPrincipal(miCoordinador.getMiEditarItems());
+                miCoordinador.getMiMostrarTipo().limpiar();
+                miCoordinador.getMiVentanaPrincipal().setPrincipal(miCoordinador.getMiMostrarTipo());
             }
         });
         add(consultar);

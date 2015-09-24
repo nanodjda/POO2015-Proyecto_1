@@ -4,7 +4,7 @@
 * Esteban Chinchilla Fallas - 2014
 */
 
-package vista;
+package vista.Items;
 
 import controlador.Principal;
 import java.awt.Color;
@@ -23,6 +23,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import modelo.Item;
+import vista.VentanaEmergente;
 import vista.controles.PLabel;
 
 /**
@@ -95,9 +96,11 @@ public class ModificarItems extends VentanaEmergente{
                     pItem.setTipo(cmbTipo.getSelectedItem().toString());
                     pItem.setDescripcion(txtDescr.getText());
                     List<String> selectedValuesList = cmbCate.getSelectedValuesList();
+                    pItem.getCategorias().clear();
                     for(String str : selectedValuesList){
                         pItem.agregarCategoria(str);
                     }
+                    JOptionPane.showMessageDialog(getRootPane(), "El item ha sido actualizado");
                     dispose();
                 } catch (Exception c) {                    
                     JOptionPane.showMessageDialog(getRootPane(),c.getMessage(),
@@ -105,7 +108,6 @@ public class ModificarItems extends VentanaEmergente{
                 }
             }
         });
-        
         
         add(titulo);
         add(lblNombre);

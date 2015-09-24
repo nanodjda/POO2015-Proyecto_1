@@ -6,6 +6,7 @@
 
 package modelo;
 
+import controlador.Principal;
 import java.util.ArrayList;
 
 /**
@@ -16,17 +17,16 @@ public class Prestamo {
 
     /************** Variables **************/
     private final int idPrestamo;
-    private static int idGlobal = 0;
     private Persona persona;
-    private ArrayList<Item> items = new ArrayList();
+    private ArrayList<String> items = new ArrayList();
     private Alerta alerta;
 
     /************* Constructor *************/
     public Prestamo(Persona pPersona){
-        persona = pPersona;
-        idGlobal += 1;
-        idPrestamo = idGlobal;
-       // persona.agregarPrestamo();
+        this.persona = pPersona;
+        Principal.idGlobalPrestamo += 1;
+        this.idPrestamo = Principal.idGlobalPrestamo;
+        persona.agregarPrestamo(this.idPrestamo);
     }
 
     /****************Metodos****************/
@@ -36,19 +36,26 @@ public class Prestamo {
         return idPrestamo;
     }
 
-    public ArrayList<Item> getItems() {
+    public ArrayList<String> getItems() {
         return items;
     }
 
-    public void agregarItem(Item pItem) {
+    public void agregarItem(String pItem) {
         items.add(pItem);
-        pItem.prestado();
+        for(Item it : Principal.getItems()){
+            if(it.getCodigo().equals(pItem)){
+                it.prestado();
+            }
+        }
     }
     
-    public void borrarItem(int pIndice) {
-        Item temp =items.get(pIndice);
-        temp.noPrestado();
-        items.remove(pIndice);
+    public void borrarItem(String pItem) {
+        items.remove(pItem);
+        for(Item it : Principal.getItems()){
+            if(it.getCodigo().equals(pItem)){
+                it.noPrestado();
+            }
+        }
     }
 
     public Alerta getAlerta() {
@@ -57,5 +64,13 @@ public class Prestamo {
 
     public void setAlerta(Alerta alerta) {
         this.alerta = alerta;
-    }    
+    }
+
+    public Persona getPersona() {
+        return persona;
+    }
+
+    public void setPersona(Persona persona) {
+        this.persona = persona;
+    }
 }

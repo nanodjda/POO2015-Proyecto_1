@@ -100,7 +100,7 @@ public class AgregarItem extends VentanaBase{
                     "Advertencia",JOptionPane.WARNING_MESSAGE);
                 }
             }
-        });        
+        });
         
         add(titulo);
         add(lblNombre);
