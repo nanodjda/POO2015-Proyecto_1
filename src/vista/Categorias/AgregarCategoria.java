@@ -15,6 +15,7 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
+import modelo.Categoria;
 import vista.VentanaBase;
 import vista.controles.PLabel;
 
@@ -54,7 +55,7 @@ public class AgregarCategoria extends VentanaBase{
             public void actionPerformed(ActionEvent e) {
                 try {
                     validar();
-                    Principal.setCategoria(txtNombre.getText());
+                    Principal.setCategoria(new Categoria(txtNombre.getText()));
                     JOptionPane.showMessageDialog(miCoordinador.getMiVentanaPrincipal(), "La categoría fue agregada correctamente");
                     miCoordinador.getMiVentanaPrincipal().setPrincipal(miCoordinador.getMiVentanaAdminCate());
                 } catch (Exception c) {                    
@@ -79,8 +80,8 @@ public class AgregarCategoria extends VentanaBase{
         if(txtNombre.getText().isEmpty()){
             throw new Exception("Debes llenar el campo para agregar.");
         }
-        for(String str : Principal.getCategorias()){
-            if(txtNombre.getText().equals(str)){
+        for(Categoria cate : Principal.getCategorias()){
+            if(txtNombre.getText().equals(cate.getNombre())){
                 throw new Exception("Ya existe esta categoría.");
             }
         }

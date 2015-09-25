@@ -22,6 +22,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
+import modelo.Categoria;
 import modelo.Item;
 import modelo.Tipo;
 import vista.VentanaEmergente;
@@ -68,9 +69,10 @@ public class ModificarItems extends VentanaEmergente{
         
         cmbTipo.setSelectedItem(pItem.getTipo().getNombre());
         DefaultListModel model = new DefaultListModel();
-        for(String str : Principal.getCategorias()) {
-            model.addElement(str);
+        for(Categoria str : Principal.getCategorias()) {
+            model.addElement(str.getNombre());
         }
+        
         cmbCate = new JList(model);
         scrCate = new JScrollPane();
         scrCate.setViewportView(cmbCate);
@@ -101,10 +103,10 @@ public class ModificarItems extends VentanaEmergente{
                     pItem.setCodigo(txtCodigo.getText());
                     pItem.setTipo(Principal.getTipos().get(cmbTipo.getSelectedIndex()));
                     pItem.setDescripcion(txtDescr.getText());
-                    List<String> selectedValuesList = cmbCate.getSelectedValuesList();
+                    List<Integer> selectedValuesList = cmbCate.getSelectedValuesList();
                     pItem.getCategorias().clear();
-                    for(String str : selectedValuesList){
-                        pItem.agregarCategoria(str);
+                    for(Integer i : cmbCate.getSelectedIndices()){
+                        pItem.agregarCategoria(Principal.getCategorias().get(i));
                     }
                     JOptionPane.showMessageDialog(getRootPane(), "El item ha sido actualizado");
                     dispose();

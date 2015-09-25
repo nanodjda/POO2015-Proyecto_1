@@ -20,6 +20,7 @@ import javax.swing.JList;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
+import modelo.Categoria;
 import modelo.Item;
 import vista.VentanaEmergente;
 import vista.controles.PLabel;
@@ -56,8 +57,8 @@ public class VerItem extends VentanaEmergente{
         JScrollPane scrDescr = new JScrollPane(txtDescr);
         txtTipo = new JTextField(pItem.getTipo().getNombre());
         DefaultListModel model = new DefaultListModel();
-        for(String str : pItem.getCategorias()) {
-            model.addElement(str);
+        for(Categoria str : pItem.getCategorias()) {
+            model.addElement(str.getNombre());
         }
         cmbCate = new JList(model);
         scrCate = new JScrollPane();

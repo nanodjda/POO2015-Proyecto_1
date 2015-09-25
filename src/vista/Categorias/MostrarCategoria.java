@@ -16,6 +16,7 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JScrollPane;
+import modelo.Categoria;
 import vista.VentanaBase;
 import vista.controles.PLabel;
 
@@ -44,8 +45,8 @@ public class MostrarCategoria extends VentanaBase{
         
         
         DefaultListModel model = new DefaultListModel();
-        for(String str : Principal.getCategorias()) {
-            model.addElement(str);
+        for(Categoria str : Principal.getCategorias()) {
+            model.addElement(str.getNombre());
         }
         cmbCate = new JList(model);
         scrCate = new JScrollPane();
@@ -74,8 +75,8 @@ public class MostrarCategoria extends VentanaBase{
     /*********** Getters/Setters ***********/
     public void limpiar(){
         DefaultListModel model = new DefaultListModel();
-        for(String str : Principal.getCategorias()) {
-            model.addElement(str);
+        for(Categoria str : Principal.getCategorias()) {
+            model.addElement(str.getNombre());
         }
         cmbCate = new JList(model);
         scrCate.setViewportView(cmbCate);

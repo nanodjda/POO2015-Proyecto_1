@@ -29,7 +29,7 @@ public class Principal {
     public static Font fuente1 = new Font("Arial", Font.BOLD, 14);
     private static ArrayList<Item> items = new ArrayList<Item>();
     private static ArrayList<Tipo> tipos = new ArrayList<Tipo>();
-    private static ArrayList<String> categorias = new ArrayList<String>();
+    private static ArrayList<Categoria> categorias = new ArrayList<>();
     private static ArrayList<Persona> personas = new ArrayList<>();
     private static ArrayList<Prestamo> prestamos = new ArrayList<>();
     public static int idGlobalPrestamo = 0;
@@ -82,9 +82,9 @@ public static void main(String[] args) {
     miPrincipal.setTipo(new Tipo("Primero"));
     miPrincipal.setTipo(new Tipo("Segundo"));
     miPrincipal.setTipo(new Tipo("Uno mas"));
-    miPrincipal.setCategoria("Categoria 1");
-    miPrincipal.setCategoria("Categoria 2");
-    miPrincipal.setCategoria("Categoria 3");
+    miPrincipal.setCategoria(new Categoria("Categoria 1"));
+    miPrincipal.setCategoria(new Categoria("Categoria 2"));
+    miPrincipal.setCategoria(new Categoria("Categoria 3"));
     miPrincipal.setPersona(new Persona("1", "David", "Diaz", "Aguilar"));
     miPrincipal.setItem(new Item("Item1", "1", Principal.getTipos().get(1)));
     miPrincipal.setItem(new Item("Item2", "2", Principal.getTipos().get(2)));
@@ -229,11 +229,11 @@ private void iniciarVentanas() {
         tipos.add(pTipos);
     }
     
-    public static ArrayList<String> getCategorias() {
+    public static ArrayList<Categoria> getCategorias() {
         return categorias;
     }
 
-    public static void setCategoria(String pCategoria) {
+    public static void setCategoria(Categoria pCategoria) {
         categorias.add(pCategoria);
     }
 

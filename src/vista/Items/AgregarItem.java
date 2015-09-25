@@ -14,6 +14,8 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 import controlador.Principal;
+import java.util.Dictionary;
+import java.util.Hashtable;
 import java.util.List;
 import javax.swing.DefaultListModel;
 import javax.swing.JComboBox;
@@ -22,6 +24,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.ListSelectionModel;
+import modelo.Categoria;
 import modelo.Item;
 import modelo.Tipo;
 import vista.VentanaBase;
@@ -59,7 +62,7 @@ public class AgregarItem extends VentanaBase{
         txtDescr = new JTextArea();
         JScrollPane scrDescr = new JScrollPane(txtDescr);
         cmbTipo = new JComboBox();
-        cmbCate = new JList(Principal.getCategorias().toArray());
+        cmbCate = new JList();
         cmbCate.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
         scrCate = new JScrollPane();
         
@@ -89,9 +92,8 @@ public class AgregarItem extends VentanaBase{
                     if(!txtDescr.getText().equals("")){
                         nuevo.setDescripcion(txtDescr.getText());
                     }
-                    List<String> selectedValuesList = cmbCate.getSelectedValuesList();
-                    for(String str : selectedValuesList){
-                        nuevo.agregarCategoria(str);
+                    for(Integer i : cmbCate.getSelectedIndices()){
+                        nuevo.agregarCategoria(Principal.getCategorias().get(i));
                     }
                     Principal.setItem(nuevo);
                     JOptionPane.showMessageDialog(miCoordinador.getMiVentanaPrincipal(), "El item fue agregado correctamente");
@@ -130,8 +132,8 @@ public class AgregarItem extends VentanaBase{
         }
         
         DefaultListModel model = new DefaultListModel();
-        for(String str : Principal.getCategorias()) {
-            model.addElement(str);
+        for(Categoria str : Principal.getCategorias()) {
+            model.addElement(str.getNombre());
         }
         cmbCate = new JList(model);
         scrCate.setViewportView(cmbCate);

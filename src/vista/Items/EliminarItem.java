@@ -17,6 +17,7 @@ import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import modelo.Item;
+import modelo.Prestamo;
 import vista.VentanaBase;
 import vista.controles.PLabel;
 
@@ -49,14 +50,18 @@ public class EliminarItem extends VentanaBase{
         eliminar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                int pos = cmbItems.getSelectedIndex();
-                Principal.getItems().remove(pos);
-                JOptionPane.showMessageDialog(miCoordinador.getMiVentanaPrincipal(), "El item fue eliminado exitosamente.");
-                if(Principal.getItems().size() > 0){
-                    miCoordinador.getMiEliminarItem().iniciar();
-                    miCoordinador.getMiVentanaPrincipal().setPrincipal(miCoordinador.getMiEliminarItem());
-                } else {
-                    miCoordinador.getMiVentanaPrincipal().setPrincipal(miCoordinador.getMiVentanaAdminItems());
+                try {
+                    validar();
+                    Principal.getItems().remove(cmbItems.getSelectedIndex());
+                    JOptionPane.showMessageDialog(miCoordinador.getMiVentanaPrincipal(), "El item fue eliminado exitosamente.");
+                    if(Principal.getItems().size() > 0){
+                        miCoordinador.getMiEliminarItem().iniciar();
+                        miCoordinador.getMiVentanaPrincipal().setPrincipal(miCoordinador.getMiEliminarItem());
+                    } else {
+                        miCoordinador.getMiVentanaPrincipal().setPrincipal(miCoordinador.getMiVentanaAdminItems());
+                    }
+                } catch (Exception exc) {
+                    JOptionPane.showMessageDialog(miCoordinador.getMiVentanaPrincipal(), exc.getMessage());
                 }
             }
         });
@@ -72,6 +77,15 @@ public class EliminarItem extends VentanaBase{
         }
         for(String str : var1) {
             cmbItems.addItem(str);
+        }
+    }
+    
+    public void validar() throws Exception{
+        for(Prestamo p : Principal.getPrestamos()){
+            if(p.getItems().contains(Principal.getItems().get(cmbItems.getSelectedIndex()).getCodigo())){
+                throw new Exception("El item está siendo usado en el \n "
+                        + "préstamo " + p.getIdPrestamo());
+            }
         }
     }
     

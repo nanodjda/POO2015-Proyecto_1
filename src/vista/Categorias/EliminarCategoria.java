@@ -16,6 +16,7 @@ import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
+import modelo.Categoria;
 import modelo.Item;
 import vista.VentanaBase;
 import vista.controles.PLabel;
@@ -87,15 +88,15 @@ public class EliminarCategoria extends VentanaBase {
     /*********** Getters/Setters ***********/
     public void limpiar(){
         cmbCate.removeAllItems();
-        for(String str : Principal.getCategorias()) {
-            cmbCate.addItem(str);
+        for(Categoria cate : Principal.getCategorias()) {
+            cmbCate.addItem(cate.getNombre());
         }
     }
     
     public void validar() throws Exception{
         for(Item item: Principal.getItems()){
-            for(String str : item.getCategorias()){
-                if(str.equals(cmbCate.getSelectedItem())){
+            for(Categoria str : item.getCategorias()){
+                if(str.getNombre().equals(cmbCate.getSelectedItem())){
                     throw new Exception("No se puede eliminar esta categoría \n"
                             + "ya que es usada por el item('"+ item.getNombre() +"').");
                 }

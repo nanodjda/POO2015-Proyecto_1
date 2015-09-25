@@ -19,8 +19,8 @@ public class Item {
     private String codigo;
     private String descripcion = "Sin descripcion";
     private Tipo tipo;
-    private ArrayList<String> categorias = new ArrayList<String>();
-    private boolean estado = false;    
+    private ArrayList<Categoria> categorias = new ArrayList<>();
+    private boolean estado = false;
             
     /************* Constructor *************/
     public Item(String pNombre, String pCodigo, Tipo pTipo){
@@ -38,7 +38,7 @@ public class Item {
         this.estado = false;
     }
     
-    public void agregarCategoria(String pCategoria){
+    public void agregarCategoria(Categoria pCategoria){
         categorias.add(pCategoria);
     }
     
@@ -78,7 +78,7 @@ public class Item {
     public void setEstado(boolean estado) {
         this.estado = estado;
     }
-    public ArrayList<String> getCategorias() {
+    public ArrayList<Categoria> getCategorias() {
         return categorias;
     }
 

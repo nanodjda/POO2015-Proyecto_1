@@ -17,6 +17,7 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.JTextField;
+import modelo.Categoria;
 import modelo.Item;
 import vista.VentanaBase;
 import vista.controles.PLabel;
@@ -59,14 +60,7 @@ public class ModificarCategoria extends VentanaBase{
                 try {
                     validar();
                     int act = cmbCate.getSelectedIndex();
-                    Principal.getCategorias().set(act, txtNombre.getText());
-                    for(Item item: Principal.getItems()){
-                        for(int i = 0; i < item.getCategorias().size(); i++){
-                            if(item.getCategorias().get(i).equals(cmbCate.getSelectedItem())){
-                                item.getCategorias().set(i, txtNombre.getText());
-                            }
-                        }
-                    }
+                    Principal.getCategorias().get(act).setNombre(txtNombre.getText());
                     JOptionPane.showMessageDialog(miCoordinador.getMiVentanaPrincipal(), "La categoría fue actualizada correctamente");
                     miCoordinador.getMiModificarCategoria().limpiar();
                     miCoordinador.getMiVentanaPrincipal().setPrincipal(miCoordinador.getMiModificarCategoria());
@@ -99,18 +93,18 @@ public class ModificarCategoria extends VentanaBase{
     public void limpiar(){
         txtNombre.setText("");
         cmbCate.removeAllItems();
-        for(String str : Principal.getCategorias()) {
-            cmbCate.addItem(str);
+        for(Categoria cate : Principal.getCategorias()) {
+            cmbCate.addItem(cate.getNombre());
         }
     }
     
-    public void validar() throws Exception{        
+    public void validar() throws Exception{
         if(txtNombre.getText().equals("")){
             throw new Exception("Debes llenar el campo con el nuevo valor.");
         }
         
-        for(String str : Principal.getCategorias()){
-            if(txtNombre.getText().equals(str)){
+        for(Categoria cate : Principal.getCategorias()){
+            if(txtNombre.getText().equals(cate.getNombre())){
                 throw new Exception("Ya existe esta categoría.");
             }
         }
