@@ -93,12 +93,13 @@ public class EditarPrestamo extends VentanaEmergente {
                             }
                         }
                     }
+                    pPrestamo.getItems().clear();
                     for(Integer x : cmbItems.getSelectedIndices()){
                         pPrestamo.agregarItem(items.get(x).toString());
                     }
                     JOptionPane.showMessageDialog(getRootPane(), "El préstamo ha sido editado.");
                     dispose();
-                } catch (Exception c) {                    
+                } catch (Exception c) {
                     JOptionPane.showMessageDialog(getRootPane(),c.getMessage(),
                     "Advertencia",JOptionPane.WARNING_MESSAGE);
                 }

@@ -18,12 +18,12 @@ public class Item {
     private String nombre;
     private String codigo;
     private String descripcion = "Sin descripcion";
-    private String tipo;
+    private Tipo tipo;
     private ArrayList<String> categorias = new ArrayList<String>();
     private boolean estado = false;    
             
     /************* Constructor *************/
-    public Item(String pNombre, String pCodigo, String pTipo){
+    public Item(String pNombre, String pCodigo, Tipo pTipo){
         this.nombre = pNombre;
         this.codigo = pCodigo;
         this.tipo = pTipo;
@@ -82,11 +82,11 @@ public class Item {
         return categorias;
     }
 
-    public String getTipo() {
+    public Tipo getTipo() {
         return tipo;
     }
     
-    public void setTipo(String pTipo){
+    public void setTipo(Tipo pTipo){
         this.tipo = pTipo;
     }
 }

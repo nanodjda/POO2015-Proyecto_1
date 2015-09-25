@@ -17,6 +17,7 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import modelo.Item;
+import modelo.Tipo;
 import vista.VentanaBase;
 import vista.controles.PLabel;
 
@@ -56,7 +57,7 @@ public class AgregarTipo extends VentanaBase{
             public void actionPerformed(ActionEvent e) {
                 try {
                     validar();
-                    Principal.setTipo(txtNombre.getText());
+                    Principal.setTipo(new Tipo(txtNombre.getText()));
                     JOptionPane.showMessageDialog(miCoordinador.getMiVentanaPrincipal(), "El tipo fue agregado correctamente");
                     miCoordinador.getMiVentanaPrincipal().setPrincipal(miCoordinador.getMiVentanaAdminTipos());
                 } catch (Exception c) {                    
@@ -81,8 +82,8 @@ public class AgregarTipo extends VentanaBase{
         if(txtNombre.getText().isEmpty()){
             throw new Exception("Debes llenar el campo para agregar.");
         }
-        for(String str : Principal.getTipos()){
-            if(txtNombre.getText().equals(str)){
+        for(Tipo pTipo : Principal.getTipos()){
+            if(txtNombre.getText().equals(pTipo.getNombre())){
                 throw new Exception("Ya existe este tipo.");
             }
         }

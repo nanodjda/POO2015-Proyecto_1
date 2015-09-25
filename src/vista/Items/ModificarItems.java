@@ -23,6 +23,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import modelo.Item;
+import modelo.Tipo;
 import vista.VentanaEmergente;
 import vista.controles.PLabel;
 
@@ -59,8 +60,13 @@ public class ModificarItems extends VentanaEmergente{
         txtCodigo = new JTextField(pItem.getCodigo(), 20);
         txtDescr = new JTextArea(pItem.getDescripcion());
         JScrollPane scrDescr = new JScrollPane(txtDescr);
-        cmbTipo = new JComboBox(Principal.getTipos().toArray());
-        cmbTipo.setSelectedItem(pItem.getTipo());
+        cmbTipo = new JComboBox();
+        
+        for(Tipo pTipo : Principal.getTipos()) {
+            cmbTipo.addItem(pTipo.getNombre());
+        }
+        
+        cmbTipo.setSelectedItem(pItem.getTipo().getNombre());
         DefaultListModel model = new DefaultListModel();
         for(String str : Principal.getCategorias()) {
             model.addElement(str);
@@ -93,7 +99,7 @@ public class ModificarItems extends VentanaEmergente{
                     validar();
                     pItem.setNombre(txtNombre.getText());
                     pItem.setCodigo(txtCodigo.getText());
-                    pItem.setTipo(cmbTipo.getSelectedItem().toString());
+                    pItem.setTipo(Principal.getTipos().get(cmbTipo.getSelectedIndex()));
                     pItem.setDescripcion(txtDescr.getText());
                     List<String> selectedValuesList = cmbCate.getSelectedValuesList();
                     pItem.getCategorias().clear();

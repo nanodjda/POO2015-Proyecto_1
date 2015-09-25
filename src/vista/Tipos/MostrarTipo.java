@@ -19,6 +19,7 @@ import javax.swing.JList;
 import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.JTextField;
+import modelo.Tipo;
 import vista.VentanaBase;
 import vista.controles.PLabel;
 
@@ -45,11 +46,11 @@ public class MostrarTipo extends VentanaBase{
         
         JLabel lblNombre = new PLabel("Tipos:");
         
-        
         DefaultListModel model = new DefaultListModel();
-        for(String str : Principal.getTipos()) {
-            model.addElement(str);
+        for(Tipo pTipo : Principal.getTipos()) {
+            model.addElement(pTipo.getNombre());
         }
+        
         cmbTipo = new JList(model);
         scrTipo = new JScrollPane();
         scrTipo.setViewportView(cmbTipo);
@@ -77,8 +78,8 @@ public class MostrarTipo extends VentanaBase{
     /*********** Getters/Setters ***********/
     public void limpiar(){
         DefaultListModel model = new DefaultListModel();
-        for(String str : Principal.getTipos()) {
-            model.addElement(str);
+        for(Tipo pTipo : Principal.getTipos()) {
+            model.addElement(pTipo.getNombre());
         }
         cmbTipo = new JList(model);
         scrTipo.setViewportView(cmbTipo);

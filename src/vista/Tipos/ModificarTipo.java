@@ -18,6 +18,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 import modelo.Item;
+import modelo.Tipo;
 import vista.VentanaBase;
 import vista.controles.PLabel;
 
@@ -48,7 +49,7 @@ public class ModificarTipo extends VentanaBase{
         JLabel lblDescr = new PLabel("Seleccione el tipo a modificar");
         
         txtNombre = new JTextField(20);
-        cmbTipo = new JComboBox(Principal.getTipos().toArray());
+        cmbTipo = new JComboBox();
         scrTipo = new JScrollPane();
         scrTipo.setViewportView(cmbTipo);
         
@@ -59,12 +60,7 @@ public class ModificarTipo extends VentanaBase{
                 try {
                     validar();
                     int act = cmbTipo.getSelectedIndex();
-                    Principal.getTipos().set(act, txtNombre.getText());
-                    for(Item item: Principal.getItems()){
-                        if(item.getTipo().equals(cmbTipo.getSelectedItem())){
-                            item.setTipo(txtNombre.getText());
-                        }
-                    }
+                    Principal.getTipos().get(act).setNombre(txtNombre.getText());
                     JOptionPane.showMessageDialog(miCoordinador.getMiVentanaPrincipal(), "El tipo fue actualizado correctamente");
                     miCoordinador.getMiModificarTipo().limpiar();
                     miCoordinador.getMiVentanaPrincipal().setPrincipal(miCoordinador.getMiModificarTipo());
@@ -97,8 +93,8 @@ public class ModificarTipo extends VentanaBase{
     public void limpiar(){
         txtNombre.setText("");
         cmbTipo.removeAllItems();
-        for(String str : Principal.getTipos()) {
-            cmbTipo.addItem(str);
+        for(Tipo pTipo : Principal.getTipos()) {
+            cmbTipo.addItem(pTipo.getNombre());
         }
     }
     
@@ -111,8 +107,8 @@ public class ModificarTipo extends VentanaBase{
             throw new Exception("Debes llenar el campo con el nuevo valor.");
         }
         
-        for(String str : Principal.getTipos()){
-            if(txtNombre.getText().equals(str)){
+        for(Tipo pTipo : Principal.getTipos()){
+            if(txtNombre.getText().equals(pTipo.getNombre())){
                 throw new Exception("Ya existe este tipo.");
             }
         }

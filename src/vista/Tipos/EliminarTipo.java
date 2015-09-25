@@ -16,8 +16,8 @@ import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
-import javax.swing.JTextField;
 import modelo.Item;
+import modelo.Tipo;
 import vista.VentanaBase;
 import vista.controles.PLabel;
 
@@ -45,7 +45,7 @@ public class EliminarTipo extends VentanaBase{
         JLabel lblNombre = new PLabel("Tipos:");
         JLabel lblDescr = new PLabel("Seleccione el tipo a eliminar");
         
-        cmbTipo = new JComboBox(Principal.getTipos().toArray());
+        cmbTipo = new JComboBox();
         scrTipo = new JScrollPane();
         scrTipo.setViewportView(cmbTipo);
         
@@ -57,6 +57,7 @@ public class EliminarTipo extends VentanaBase{
                     validar();
                     int act = cmbTipo.getSelectedIndex();
                     Principal.getTipos().remove(act);
+                    
                     JOptionPane.showMessageDialog(miCoordinador.getMiVentanaPrincipal(), "El tipo fue eliminado correctamente");
                     miCoordinador.getMiEliminarTipo().limpiar();
                     miCoordinador.getMiVentanaPrincipal().setPrincipal(miCoordinador.getMiEliminarTipo());
@@ -84,8 +85,8 @@ public class EliminarTipo extends VentanaBase{
     /*********** Getters/Setters ***********/
     public void limpiar(){
         cmbTipo.removeAllItems();
-        for(String str : Principal.getTipos()) {
-            cmbTipo.addItem(str);
+        for(Tipo pTipo : Principal.getTipos()) {
+            cmbTipo.addItem(pTipo.getNombre());
         }
     }
     
@@ -94,7 +95,7 @@ public class EliminarTipo extends VentanaBase{
             throw new Exception("No puedes actualizar este valor.");
         }
         for(Item item: Principal.getItems()){
-            if(item.getTipo().equals(cmbTipo.getSelectedItem())){
+            if(item.getTipo().getNombre().equals(cmbTipo.getSelectedItem())){
                 throw new Exception("No se puede eliminar este tipo \n"
                         + "ya que es usado por un item.");
             }

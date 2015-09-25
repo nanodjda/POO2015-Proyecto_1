@@ -45,7 +45,7 @@ public class verPrestamo extends VentanaEmergente {
     public verPrestamo(JFrame frame, String title, int ancho, int alto, Prestamo pPrestamo) {
         super(frame, title, ancho, alto);
         
-        JLabel titulo = new JLabel("ver Prestamo");
+        JLabel titulo = new JLabel("Ver Prestamo");
         titulo.setForeground(new Color(159, 227, 255));
         titulo.setFont(new Font("Arial", Font.BOLD, 25));
         

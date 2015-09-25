@@ -23,6 +23,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.ListSelectionModel;
 import modelo.Item;
+import modelo.Tipo;
 import vista.VentanaBase;
 import vista.controles.*;
 
@@ -57,7 +58,7 @@ public class AgregarItem extends VentanaBase{
         txtCodigo = new JTextField(20);
         txtDescr = new JTextArea();
         JScrollPane scrDescr = new JScrollPane(txtDescr);
-        cmbTipo = new JComboBox(Principal.getTipos().toArray());
+        cmbTipo = new JComboBox();
         cmbCate = new JList(Principal.getCategorias().toArray());
         cmbCate.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
         scrCate = new JScrollPane();
@@ -84,7 +85,7 @@ public class AgregarItem extends VentanaBase{
             public void actionPerformed(ActionEvent e) {
                 try {
                     validar();
-                    Item nuevo = new Item(txtNombre.getText(), txtCodigo.getText(), cmbTipo.getSelectedItem().toString());
+                    Item nuevo = new Item(txtNombre.getText(), txtCodigo.getText(), Principal.getTipos().get(cmbTipo.getSelectedIndex()));
                     if(!txtDescr.getText().equals("")){
                         nuevo.setDescripcion(txtDescr.getText());
                     }
@@ -124,8 +125,8 @@ public class AgregarItem extends VentanaBase{
         txtCodigo.setText("");
         txtDescr.setText("");
         cmbTipo.removeAllItems();
-        for(String str : Principal.getTipos()) {
-            cmbTipo.addItem(str);
+        for(Tipo pTipo : Principal.getTipos()) {
+            cmbTipo.addItem(pTipo.getNombre());
         }
         
         DefaultListModel model = new DefaultListModel();

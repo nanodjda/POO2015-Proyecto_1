@@ -31,9 +31,8 @@ import vista.controles.PLabel;
 public class VerItem extends VentanaEmergente{
 
     /************** Variables **************/
-    private JTextField txtNombre, txtCodigo;
+    private JTextField txtNombre, txtCodigo, txtTipo;
     private JTextArea txtDescr;
-    private JComboBox cmbTipo;
     private JScrollPane scrCate;
     private JList cmbCate;
     private JButton aceptar;
@@ -55,8 +54,7 @@ public class VerItem extends VentanaEmergente{
         txtCodigo = new JTextField(pItem.getCodigo(), 20);
         txtDescr = new JTextArea(pItem.getDescripcion());
         JScrollPane scrDescr = new JScrollPane(txtDescr);
-        cmbTipo = new JComboBox(Principal.getTipos().toArray());
-        cmbTipo.setSelectedItem(pItem.getTipo());
+        txtTipo = new JTextField(pItem.getTipo().getNombre());
         DefaultListModel model = new DefaultListModel();
         for(String str : pItem.getCategorias()) {
             model.addElement(str);
@@ -73,7 +71,7 @@ public class VerItem extends VentanaEmergente{
         lblDescri.setBounds(10, 150, 100, 30);
         scrDescr.setBounds(110, 150, 385, 90);
         lblTipo.setBounds(65, 250, 80, 30);
-        cmbTipo.setBounds(110, 250, 150, 30);
+        txtTipo.setBounds(110, 250, 150, 30);
         lblCate.setBounds(10, 290, 80, 30);
         scrCate.setBounds(110, 290, 150, 100);
         
@@ -93,7 +91,7 @@ public class VerItem extends VentanaEmergente{
         txtCodigo.setDisabledTextColor(Color.black);
         txtDescr.enable(false);
         txtDescr.setDisabledTextColor(Color.black);
-        cmbTipo.enable(false);
+        txtTipo.enable(false);
         cmbCate.enable(false);
         
         add(titulo);
@@ -104,7 +102,7 @@ public class VerItem extends VentanaEmergente{
         add(lblDescri);
         add(scrDescr);
         add(lblTipo);
-        add(cmbTipo);
+        add(txtTipo);
         add(lblCate);
         add(scrCate);
         add(aceptar);
@@ -113,13 +111,7 @@ public class VerItem extends VentanaEmergente{
     }
     /****************Metodos****************/
         
-    public void validar() throws Exception{
-        if(txtNombre.getText().equals("")
-                || txtCodigo.getText().equals("")
-                || cmbTipo.getSelectedObjects().length == 0){
-            throw new Exception("Debe llenar los campos obligatorios");
-        }
-    }
+
     /*********** Getters/Setters ***********/
 
 }

@@ -28,7 +28,7 @@ public class Principal {
     
     public static Font fuente1 = new Font("Arial", Font.BOLD, 14);
     private static ArrayList<Item> items = new ArrayList<Item>();
-    private static ArrayList<String> tipos = new ArrayList<String>();
+    private static ArrayList<Tipo> tipos = new ArrayList<Tipo>();
     private static ArrayList<String> categorias = new ArrayList<String>();
     private static ArrayList<Persona> personas = new ArrayList<>();
     private static ArrayList<Prestamo> prestamos = new ArrayList<>();
@@ -78,17 +78,17 @@ public class Principal {
     */
 public static void main(String[] args) {
     Principal miPrincipal=new Principal();
-    miPrincipal.setTipo("Default");
-    miPrincipal.setTipo("Primero");
-    miPrincipal.setTipo("Segundo");
-    miPrincipal.setTipo("Uno mas");
+    miPrincipal.setTipo(new Tipo("Default"));
+    miPrincipal.setTipo(new Tipo("Primero"));
+    miPrincipal.setTipo(new Tipo("Segundo"));
+    miPrincipal.setTipo(new Tipo("Uno mas"));
     miPrincipal.setCategoria("Categoria 1");
     miPrincipal.setCategoria("Categoria 2");
     miPrincipal.setCategoria("Categoria 3");
     miPrincipal.setPersona(new Persona("1", "David", "Diaz", "Aguilar"));
-    miPrincipal.setItem(new Item("Item1", "1", "Primero"));
-    miPrincipal.setItem(new Item("Item2", "2", "Primero"));
-    miPrincipal.setItem(new Item("Item3", "3", "Primero"));
+    miPrincipal.setItem(new Item("Item1", "1", Principal.getTipos().get(1)));
+    miPrincipal.setItem(new Item("Item2", "2", Principal.getTipos().get(2)));
+    miPrincipal.setItem(new Item("Item3", "3", Principal.getTipos().get(3)));
     
     miPrincipal.iniciarVentanas();
 }
@@ -221,11 +221,11 @@ private void iniciarVentanas() {
         items.add(pItem);
     }
 
-    public static ArrayList<String> getTipos() {
+    public static ArrayList<Tipo> getTipos() {
         return tipos;
     }
 
-    public static void setTipo(String pTipos) {
+    public static void setTipo(Tipo pTipos) {
         tipos.add(pTipos);
     }
     
