@@ -7,6 +7,7 @@
 package modelo;
 
 import controlador.Coordinador;
+import java.util.ArrayList;
 
 /**
  *
@@ -21,8 +22,14 @@ public class Logica {
 
     /****************Metodos****************/
     
+    public void guardarDatos(ArrayList<Item> items, ArrayList<Tipo> tipos, ArrayList<Categoria> categorias, 
+            ArrayList<Persona> personas, ArrayList<Prestamo> prestamos, int idGlobalPrestamo, int idGlobalItem){
+        
+        
+    }
+    
     /*********** Getters/Setters ***********/
-     public Coordinador getCoordinador() {
+    public Coordinador getCoordinador() {
         return coordinador;
     }
 

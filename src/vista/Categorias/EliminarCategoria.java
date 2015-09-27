@@ -19,7 +19,7 @@ import javax.swing.JScrollPane;
 import modelo.Categoria;
 import modelo.Item;
 import vista.VentanaBase;
-import vista.controles.PLabel;
+import vista.PLabel;
 
 /**
  *

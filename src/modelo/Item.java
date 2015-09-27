@@ -6,13 +6,14 @@
 
 package modelo;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
  * @author Arturo 18/09/2015
  * @author David 17/09/2015
  */
-public class Item {
+public class Item implements Serializable{
 
     /************** Variables **************/
     private String nombre;

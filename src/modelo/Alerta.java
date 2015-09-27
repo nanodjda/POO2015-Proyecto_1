@@ -6,11 +6,13 @@
 
 package modelo;
 
+import java.io.Serializable;
+
 /**
  *
  * @author David 17/09/2015
  */
-public class Alerta {
+public class Alerta implements Serializable {
 
     /************** Variables **************/
     private String tipo;

@@ -20,7 +20,7 @@ import javax.swing.JTextField;
 import modelo.Categoria;
 import modelo.Item;
 import vista.VentanaBase;
-import vista.controles.PLabel;
+import vista.PLabel;
 
 /**
  *

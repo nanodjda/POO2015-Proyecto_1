@@ -26,7 +26,7 @@ import modelo.Categoria;
 import modelo.Item;
 import modelo.Tipo;
 import vista.VentanaEmergente;
-import vista.controles.PLabel;
+import vista.PLabel;
 
 /**
  *
@@ -56,6 +56,13 @@ public class ModificarItems extends VentanaEmergente{
         JLabel lblCate = new PLabel("Categorías:");
         JLabel lblCate2 = new PLabel("Seleccione las categorías");
         JLabel lblCate3 = new PLabel("(Con Ctrl puede seleccionar mas de una)");
+        JLabel lblEstado;
+                
+        if(pItem.getEstado()){
+            lblEstado = new PLabel("Estado: Prestado");  
+        } else {
+            lblEstado = new PLabel("Estado: Disponible");
+        }
         
         txtNombre = new JTextField(pItem.getNombre(), 20);
         txtCodigo = new JTextField(pItem.getCodigo(), 20);
@@ -90,6 +97,7 @@ public class ModificarItems extends VentanaEmergente{
         scrCate.setBounds(110, 290, 150, 100);
         lblCate2.setBounds(110, 400, 400, 30);
         lblCate3.setBounds(110, 430, 400, 30);
+        lblEstado.setBounds(270, 250, 150, 30);
         
         aceptar = new JButton("Aceptar");
         aceptar.setBounds(540, 450, 100, 30);
@@ -129,6 +137,7 @@ public class ModificarItems extends VentanaEmergente{
         add(lblCate);
         add(lblCate2);
         add(lblCate3);
+        add(lblEstado);
         add(scrCate);
         add(aceptar);
         

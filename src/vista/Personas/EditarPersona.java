@@ -10,6 +10,8 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -17,7 +19,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import modelo.Persona;
 import vista.VentanaEmergente;
-import vista.controles.PLabel;
+import vista.PLabel;
 
 /**
  *
@@ -81,7 +83,7 @@ public class EditarPersona extends VentanaEmergente{
                     pPersona.setCorreo(txtCorreo.getText());
                     JOptionPane.showMessageDialog(getRootPane(), "La persona ha sido actualizada");
                     dispose();
-                } catch (Exception c) {                    
+                } catch (Exception c) {
                     JOptionPane.showMessageDialog(getRootPane(),c.getMessage(),
                     "Advertencia",JOptionPane.WARNING_MESSAGE);
                 }

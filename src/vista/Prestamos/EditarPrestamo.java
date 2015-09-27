@@ -25,7 +25,7 @@ import modelo.Item;
 import modelo.Persona;
 import modelo.Prestamo;
 import vista.VentanaEmergente;
-import vista.controles.PLabel;
+import vista.PLabel;
 
 /**
  *

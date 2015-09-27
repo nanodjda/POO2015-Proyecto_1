@@ -21,7 +21,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 import modelo.Tipo;
 import vista.VentanaBase;
-import vista.controles.PLabel;
+import vista.PLabel;
 
 /**
  *

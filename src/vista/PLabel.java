@@ -4,7 +4,7 @@
 * Esteban Chinchilla Fallas - 2014
 */
 
-package vista.controles;
+package vista;
 
 import controlador.Principal;
 import java.awt.Color;

@@ -19,7 +19,7 @@ import javax.swing.JOptionPane;
 import modelo.Item;
 import modelo.Prestamo;
 import vista.VentanaBase;
-import vista.controles.PLabel;
+import vista.PLabel;
 
 /**
  *

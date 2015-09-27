@@ -6,6 +6,7 @@
 
 package vista.Items;
 
+import vista.PLabel;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
@@ -28,7 +29,6 @@ import modelo.Categoria;
 import modelo.Item;
 import modelo.Tipo;
 import vista.VentanaBase;
-import vista.controles.*;
 
 /**
  *

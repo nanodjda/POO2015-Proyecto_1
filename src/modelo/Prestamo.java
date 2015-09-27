@@ -7,13 +7,14 @@
 package modelo;
 
 import controlador.Principal;
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
  * @author Arturo 19/09/2015
  * @author David 17/09/2015
  */
-public class Prestamo {
+public class Prestamo implements Serializable {
 
     /************** Variables **************/
     private final int idPrestamo;

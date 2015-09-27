@@ -11,6 +11,8 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.util.ArrayList;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -19,7 +21,7 @@ import modelo.Item;
 import modelo.Persona;
 import vista.Items.ModificarItems;
 import vista.VentanaBase;
-import vista.controles.PLabel;
+import vista.PLabel;
 
 /**
  *
@@ -43,9 +45,18 @@ public class ModificarPersona extends VentanaBase {
             @Override
             public void actionPerformed(ActionEvent e) {
                 int pos = cmbPerson.getSelectedIndex();
-                new EditarPersona(miCoordinador.getMiVentanaPrincipal(), 
+                EditarPersona nuevo = new EditarPersona(miCoordinador.getMiVentanaPrincipal(), 
                         "Modificar Persona: " + Principal.getPersonas().get(pos), 
-                        700, 550, Principal.getPersonas().get(pos)).setVisible(true);
+                        700, 550, Principal.getPersonas().get(pos));
+                nuevo.addWindowListener(new WindowAdapter() {
+                    @Override
+                    public void windowClosed(WindowEvent ex) {
+                        miCoordinador.getMiModificarPersona().iniciar();
+                        miCoordinador.getMiVentanaPrincipal().setPrincipal(miCoordinador.getMiModificarPersona());
+                    }
+                });
+                
+                nuevo.setVisible(true);
             }
         });
         
@@ -65,7 +76,9 @@ public class ModificarPersona extends VentanaBase {
         cmbPerson.removeAllItems();
         ArrayList<String> var1 = new ArrayList<>();
         for(Persona per : Principal.getPersonas()){
-            var1.add(per.getNombre() + " ");
+            var1.add(per.getNombre() + " " + 
+                    per.getPrimerApellido() + " " + 
+                    per.getSegundoApellido());
         }
         for(String str : var1) {
             cmbPerson.addItem(str);

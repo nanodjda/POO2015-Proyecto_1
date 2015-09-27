@@ -38,8 +38,14 @@ public class VentanaAdminItems extends VentanaBase{
         crear.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                miCoordinador.getMiAgregarItem().limpiarComponentes();
-                miCoordinador.getMiVentanaPrincipal().setPrincipal(miCoordinador.getMiAgregarItem());
+                try {
+                    if(Principal.getTipos().size() == 1){ throw new Exception("No hay tipos agregados.");}
+                    if(Principal.getCategorias().isEmpty()){ throw new Exception("No hay categorías agregadas.");}
+                    miCoordinador.getMiAgregarItem().limpiarComponentes();
+                    miCoordinador.getMiVentanaPrincipal().setPrincipal(miCoordinador.getMiAgregarItem()); 
+                } catch (Exception ex) {
+                    JOptionPane.showMessageDialog(miCoordinador.getMiVentanaPrincipal(), ex.getMessage());
+                }
             }
         });
         add(crear);

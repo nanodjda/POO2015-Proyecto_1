@@ -6,14 +6,12 @@
 
 package vista.Items;
 
-import controlador.Principal;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.DefaultListModel;
 import javax.swing.JButton;
-import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JList;
@@ -23,7 +21,7 @@ import javax.swing.JTextField;
 import modelo.Categoria;
 import modelo.Item;
 import vista.VentanaEmergente;
-import vista.controles.PLabel;
+import vista.PLabel;
 
 /**
  *
@@ -50,6 +48,13 @@ public class VerItem extends VentanaEmergente{
         JLabel lblDescri = new PLabel("Descripción:");
         JLabel lblTipo = new PLabel("Tipo:");
         JLabel lblCate = new PLabel("Categorías:");
+        JLabel lblEstado;
+                
+        if(pItem.getEstado()){
+            lblEstado = new PLabel("Estado: Prestado");  
+        } else {
+            lblEstado = new PLabel("Estado: Disponible");
+        }
         
         txtNombre = new JTextField(pItem.getNombre(), 20);
         txtCodigo = new JTextField(pItem.getCodigo(), 20);
@@ -75,6 +80,7 @@ public class VerItem extends VentanaEmergente{
         txtTipo.setBounds(110, 250, 150, 30);
         lblCate.setBounds(10, 290, 80, 30);
         scrCate.setBounds(110, 290, 150, 100);
+        lblEstado.setBounds(270, 250, 150, 30);
         
         aceptar = new JButton("Aceptar");
         aceptar.setBounds(540, 450, 100, 30);
@@ -106,6 +112,7 @@ public class VerItem extends VentanaEmergente{
         add(txtTipo);
         add(lblCate);
         add(scrCate);
+        add(lblEstado);
         add(aceptar);
         
         
