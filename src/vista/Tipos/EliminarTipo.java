@@ -1,7 +1,7 @@
 /**
 * David Diaz Aguilar - 2014004725
 * Arturo Luna Izaguirre - 2014110993
-* Esteban Chinchilla Fallas - 2014
+* Esteban Chinchilla Fallas - 2014001360
 */
 
 package vista.Tipos;
@@ -22,6 +22,8 @@ import vista.VentanaBase;
 import vista.PLabel;
 
 /**
+ * Se encarga de mostrar un combobox con los tipos, si un tipo es usado por un
+ * item, este no se podra borrar.
  *
  * @author David 22/09/2015
  */

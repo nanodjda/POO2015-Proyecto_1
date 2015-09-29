@@ -23,7 +23,7 @@ import vista.VentanaBase;
 import vista.PLabel;
 
 /**
- * Se encarga de crear una ventana que muestra pos prestamos existentes y
+ * Se encarga de crear una ventana que muestra los prestamos existentes y
  * permite finalizarlos.
  *
  * @author David 22/09/2015

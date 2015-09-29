@@ -11,8 +11,6 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -76,7 +74,7 @@ public class EditarPersona extends VentanaEmergente{
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
-                    validar();
+                    validar(pPersona);
                     pPersona.setNombre(txtNombre.getText());
                     pPersona.setPrimerApellido(txtPrimer.getText());
                     pPersona.setSegundoApellido(txtSegundo.getText());
@@ -119,7 +117,7 @@ public class EditarPersona extends VentanaEmergente{
         txtCorreo.setText("");
     }
     
-    public void validar() throws Exception{
+    public void validar(Persona pPersona) throws Exception{
         if(txtNombre.getText().isEmpty() ||
                 txtCedula.getText().isEmpty()||
                 txtPrimer.getText().isEmpty()||
@@ -128,12 +126,10 @@ public class EditarPersona extends VentanaEmergente{
             throw new Exception("Debes llenar los campos obligatorios.");
         }
         
-        for(Persona pPersona : Principal.getPersonas()){
-            if(txtCedula.getText().equals(pPersona.getCedula())){
+        for(Persona p : Principal.getPersonas()){
+            if(txtCedula.getText().equals(p.getCedula()) && !txtCedula.getText().equals(pPersona.getCedula())){
                 throw new Exception("Ya existe esta persona.");
             }
         }
     }
-    
-    /*********** Getters/Setters ***********/
 }

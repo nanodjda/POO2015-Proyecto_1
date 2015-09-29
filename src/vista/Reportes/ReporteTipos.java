@@ -1,7 +1,7 @@
 /**
 * David Diaz Aguilar - 2014004725
 * Arturo Luna Izaguirre - 2014110993
-* Esteban Chinchilla Fallas - 2014
+* Esteban Chinchilla Fallas - 2014001360
 */
 
 package vista.Reportes;
@@ -25,6 +25,8 @@ import vista.PLabel;
 import vista.VentanaBase;
 
 /**
+ * Se encarga de mostrar una ventana que contiene una tabla y se llena
+ * de acuerdo al tipo seleccionado.
  *
  * @author David 28/09/2015
  */

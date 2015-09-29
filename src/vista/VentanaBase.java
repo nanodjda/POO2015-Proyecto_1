@@ -7,6 +7,8 @@
 package vista;
 
 import controlador.Coordinador;
+import java.awt.Image;
+import java.awt.Toolkit;
 
 /**
  * Crea una Panel con fondo y se le da un controlador o coordinador.

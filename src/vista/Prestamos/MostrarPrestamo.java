@@ -20,7 +20,7 @@ import vista.VentanaBase;
 import vista.PLabel;
 
 /**
- * Se encarga de crear una instancia de una ventana para mostrar los prestamos
+ * Se encarga de crear la instancia de una ventana para mostrar los prestamos
  * en el sistema.
  *
  * @author David 22/09/2015

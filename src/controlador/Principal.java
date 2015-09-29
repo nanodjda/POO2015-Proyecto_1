@@ -51,7 +51,6 @@ public class Principal {
     EliminarItem ventanaEliminarItem;
     MostrarItem ventanaMostrarItem;
     
-    VentanaTipo ventanaTipo;
     VentanaAdminTipos ventanaAdminTipos;
     AgregarTipo ventanaAgregarTipo;
     ModificarTipo ventanaModificarTipo;
@@ -108,7 +107,6 @@ public class Principal {
         ventanaEliminarItem = new EliminarItem();
         ventanaMostrarItem = new MostrarItem();
 
-        ventanaTipo = new VentanaTipo();
         ventanaAdminTipos = new VentanaAdminTipos();
         ventanaAgregarTipo = new AgregarTipo();
         ventanaModificarTipo = new ModificarTipo();
@@ -164,7 +162,6 @@ public class Principal {
         ventanaEliminarItem.setCoordinador(coordinador);
         ventanaMostrarItem.setCoordinador(coordinador);
 
-        ventanaTipo.setCoordinador(coordinador);
         ventanaAdminTipos.setCoordinador(coordinador);
         ventanaAgregarTipo.setCoordinador(coordinador);
         ventanaModificarTipo.setCoordinador(coordinador);
@@ -209,7 +206,6 @@ public class Principal {
         coordinador.setMiEliminarItem(ventanaEliminarItem);
         coordinador.setMiMostrarItem(ventanaMostrarItem);
 
-        coordinador.setMiVentanaTipo(ventanaTipo);
         coordinador.setMiVentanaAdminTipos(ventanaAdminTipos);
         coordinador.setMiAgregarTipo(ventanaAgregarTipo);
         coordinador.setMiModificarTipo(ventanaModificarTipo);
@@ -248,7 +244,7 @@ public class Principal {
         coordinador.getMiLogica().cargarDatos();
         ventanaPrincipal.setBarraMenu(barraMenu);
         ventanaPrincipal.setVisible(true);
-        coordinador.getMiLogica().revisarAlertas();
+        coordinador.getMiLogica().revisarTiempo();
     }
     
     /*********** Getters/Setters ***********/

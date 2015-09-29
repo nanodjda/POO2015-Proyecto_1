@@ -16,6 +16,8 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Locale;
+import java.util.Timer;
+import java.util.TimerTask;
 import javax.swing.table.DefaultTableModel;
 import vista.miVentanaAlerta;
 
@@ -91,27 +93,46 @@ public class Logica {
         DefaultTableModel dtm = new DefaultTableModel(data, columnNames);
         for(int i = 0; i < Principal.getPrestamos().size(); i++){
             Date fec = Principal.getPrestamos().get(i).getAlerta().getFec_fin();
-            int txt1 = Principal.getPrestamos().get(i).getIdPrestamo();
-            String txt2;
+            String txt2 = "";
+            String txt3 = "";
+            String txt4 = "";
             if(new Date().compareTo(fec) > 0){
+                int txt1 = Principal.getPrestamos().get(i).getIdPrestamo();
                 txt2 = "Vencida";
                 if(Principal.getPrestamos().get(i).getAlerta().getTipo().equals("Recurrente")){
                     Principal.getPrestamos().get(i).getAlerta().sumarDias();
                 }
-            } else {
-                txt2 = "A tiempo";
+                txt3 = formatoFecha.format(fec);
+                txt4 = Principal.getPrestamos().get(i).getPersona().getNombre() + " " +
+                        Principal.getPrestamos().get(i).getPersona().getPrimerApellido() + " " +
+                        Principal.getPrestamos().get(i).getPersona().getSegundoApellido();
+
+                Object[] newRow={txt1, txt2, txt3, txt4};
+                dtm.addRow(newRow);
             }
-            String txt3 = formatoFecha.format(fec);
-            String txt4 = Principal.getPrestamos().get(i).getPersona().getNombre() + " " +
-                    Principal.getPrestamos().get(i).getPersona().getPrimerApellido() + " " +
-                    Principal.getPrestamos().get(i).getPersona().getSegundoApellido();
-            
-            Object[] newRow={txt1, txt2, txt3, txt4};
-            dtm.addRow(newRow);
         }
         miVentanaAlerta alertas = new miVentanaAlerta(coordinador.getMiVentanaPrincipal(), "Alertas", 700, 500, dtm);
         alertas.setLocationRelativeTo(null);
         alertas.setVisible(true);
+    }
+    
+    public void revisarTiempo(){
+        Timer timer;
+        timer = new Timer();
+        TimerTask task = new TimerTask() {
+            @Override
+            public void run()
+            {
+                revisarAlertas();
+            }
+            };
+        
+        /**
+         * El primer valor es un segundo en ms y el ultimo es el lapso de horas 
+         * en la que se mostrara la alerta
+        */
+        int tiempo = 1000 * 60 * 60 * 6;
+        timer.schedule(task, 10, tiempo);
     }
     
     /*********** Getters/Setters ***********/

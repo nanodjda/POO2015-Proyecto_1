@@ -1,7 +1,7 @@
 /**
 * David Diaz Aguilar - 2014004725
 * Arturo Luna Izaguirre - 2014110993
-* Esteban Chinchilla Fallas - 2014
+* Esteban Chinchilla Fallas - 2014001360
 */
 
 package vista.Reportes;
@@ -9,12 +9,9 @@ package vista.Reportes;
 import controlador.Principal;
 import java.awt.Color;
 import java.awt.Font;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
-import java.util.Date;
-import java.util.Locale;
 import javax.swing.JLabel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
@@ -23,6 +20,7 @@ import modelo.Item;
 import vista.VentanaBase;
 
 /**
+ * Se encarga de mostrar una tabla que se llena segun el tipo seleccionado
  *
  * @author David 27/09/2015
  */

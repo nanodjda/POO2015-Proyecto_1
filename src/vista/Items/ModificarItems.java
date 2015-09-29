@@ -11,6 +11,7 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import java.util.List;
 import javax.swing.DefaultListModel;
 import javax.swing.JButton;
@@ -86,14 +87,25 @@ public class ModificarItems extends VentanaEmergente{
         for(Tipo pTipo : Principal.getTipos()) {
             cmbTipo.addItem(pTipo.getNombre());
         }
-        
         cmbTipo.setSelectedItem(pItem.getTipo().getNombre());
+        
+        int nuevo[] = new int[pItem.getCategorias().size()];
+        int cont = 0; //Se encarga de llevar el conteo de posiciones en nuevo
+        int cont2 = 0; //Se encarga de llevar el conteo de posiciones en la lista
+        
         DefaultListModel model = new DefaultListModel();
         for(Categoria str : Principal.getCategorias()) {
             model.addElement(str.getNombre());
+            for(Categoria cate : pItem.getCategorias()){
+                if(cate.equals(str)){
+                    nuevo[cont] = cont2;
+                    cont += 1;
+                }
+            }
+            cont2 += 1;
         }
-        
         cmbCate = new JList(model);
+        cmbCate.setSelectedIndices(nuevo);
         scrCate = new JScrollPane();
         scrCate.setViewportView(cmbCate);
         

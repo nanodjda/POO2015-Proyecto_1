@@ -21,6 +21,7 @@ import javax.swing.JList;
 import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.JTextField;
+import modelo.Categoria;
 import modelo.Item;
 import modelo.Persona;
 import modelo.Prestamo;
@@ -51,16 +52,24 @@ public class EditarPrestamo extends VentanaEmergente {
         titulo.setForeground(new Color(159, 227, 255));
         titulo.setFont(new Font("Arial", Font.BOLD, 25));
         
+        int nuevo[] = new int[pPrestamo.getItems().size()];
+        int cont = 0; //Se encarga de llevar el conteo de posiciones en nuevo
+        
         DefaultListModel model = new DefaultListModel();
         for(Item ite : Principal.getItems()) {
             if(ite.getEstado() == false || pPrestamo.getItems().contains(ite)){
                 model.addElement(ite.getNombre());
+                if(pPrestamo.getItems().contains(ite)){
+                    nuevo[cont] = pos;
+                    cont += 1;
+                }
                 items.put(pos, ite);
                 pos += 1;
             }
         }
         
         cmbItems = new JList(model);
+        cmbItems.setSelectedIndices(nuevo);
         scrItems = new JScrollPane();
         scrItems.setViewportView(cmbItems);
         
@@ -72,12 +81,16 @@ public class EditarPrestamo extends VentanaEmergente {
         
         JLabel lblNombre = new PLabel("Persona:");
         JLabel lblItems = new PLabel("Items:");
+        JLabel lblItemEsp = new PLabel("Selecciona varios items con");
+        JLabel lblItemEsp2 = new PLabel("Ctrl + clic");
         
         titulo.setBounds(250, 15, 350, 50);
         lblNombre.setBounds(10, 100, 100, 30);
         txtPersona.setBounds(10, 140, 300, 30);
         lblItems.setBounds(320, 100, 100, 30);
         scrItems.setBounds(320, 140, 100, 100);
+        lblItemEsp.setBounds(430, 140, 200, 30);
+        lblItemEsp2.setBounds(430, 170, 200, 30);
         
         JButton agregar = new JButton("Editar");
         agregar.setBounds(540, 450, 100, 30);
@@ -108,6 +121,8 @@ public class EditarPrestamo extends VentanaEmergente {
         add(txtPersona);
         add(scrItems);
         add(lblItems);
+        add(lblItemEsp);
+        add(lblItemEsp2);
         add(agregar);
         
     }

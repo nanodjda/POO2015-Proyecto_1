@@ -9,6 +9,8 @@ package vista;
 import controlador.Coordinador;
 import controlador.Principal;
 import java.awt.Color;
+import java.awt.Image;
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
@@ -53,9 +55,12 @@ public class VentanaPrincipal extends JFrame{
         setLayout(null);
         setSize(ancho_lateral + ancho_principal + 15, alto + 60);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setTitle("La Cueva 2.0");
+        setTitle("Proyecto 1 - Aplicación de Prestaciones");
         setLocationRelativeTo(null);
         setResizable(false);
+        
+        Image icon = Toolkit.getDefaultToolkit().getImage(VentanaBase.class.getResource("imagenes/icono.png"));
+	setIconImage(icon);
         
         lateral = new PanelLateral(ancho_lateral, alto);
         lateral.setBounds(0, 0, ancho_lateral, alto);

@@ -1,18 +1,15 @@
 /**
 * David Diaz Aguilar - 2014004725
 * Arturo Luna Izaguirre - 2014110993
-* Esteban Chinchilla Fallas - 2014
+* Esteban Chinchilla Fallas - 2014001360
 */
 
 package vista.Prestamos;
 
-import controlador.Principal;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.Dictionary;
-import java.util.Hashtable;
 import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -27,6 +24,8 @@ import vista.VentanaEmergente;
 import vista.PLabel;
 
 /**
+ * Se encarga de desplegar la informacion de un prestamo que es pasado como 
+ * parametro.
  *
  * @author David 24/09/2015
  */

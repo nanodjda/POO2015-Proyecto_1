@@ -38,7 +38,6 @@ public class Coordinador {
     private ModificarTipo miModificarTipo;
     private EliminarTipo miEliminarTipo;
     private MostrarTipo miMostrarTipo;
-    private VentanaTipo miVentanaTipo;
     
     private VentanaAdminCate miVentanaAdminCate;
     private AgregarCategoria miAgregarCategoria;
@@ -92,14 +91,6 @@ public class Coordinador {
 
     public void setMiEditarItems(EditarItems miEditarItems) {
         this.miEditarItems = miEditarItems;
-    }
-
-    public VentanaTipo getMiVentanaTipo() {
-        return miVentanaTipo;
-    }
-
-    public void setMiVentanaTipo(VentanaTipo miVentanaTipo) {
-        this.miVentanaTipo = miVentanaTipo;
     }
 
     public VentanaAdminItems getMiVentanaAdminItems() {

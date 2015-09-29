@@ -1,7 +1,7 @@
 /**
 * David Diaz Aguilar - 2014004725
 * Arturo Luna Izaguirre - 2014110993
-* Esteban Chinchilla Fallas - 2014
+* Esteban Chinchilla Fallas - 2014001360
 */
 
 package vista.Tipos;
@@ -13,17 +13,16 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.DefaultListModel;
 import javax.swing.JButton;
-import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JList;
-import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
-import javax.swing.JTextField;
 import modelo.Tipo;
 import vista.VentanaBase;
 import vista.PLabel;
 
 /**
+ * Se encarga de mostrar una ventana que contiene un combobox con los tipos
+ * que se pueden mostrar.
  *
  * @author David 22/09/2015
  */

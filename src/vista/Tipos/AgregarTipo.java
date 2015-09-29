@@ -1,7 +1,7 @@
 /**
 * David Diaz Aguilar - 2014004725
 * Arturo Luna Izaguirre - 2014110993
-* Esteban Chinchilla Fallas - 2014
+* Esteban Chinchilla Fallas - 2014001360
 */
 
 package vista.Tipos;
@@ -11,17 +11,16 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.List;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
-import modelo.Item;
 import modelo.Tipo;
 import vista.VentanaBase;
 import vista.PLabel;
 
 /**
+ * Se encarga de mostrar una ventana que permite agregar un tipo.
  *
  * @author David 22/09/2015
  */

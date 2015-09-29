@@ -1,7 +1,7 @@
 /**
 * David Diaz Aguilar - 2014004725
 * Arturo Luna Izaguirre - 2014110993
-* Esteban Chinchilla Fallas - 2014
+* Esteban Chinchilla Fallas - 2014001360
 */
 
 package vista.Tipos;
@@ -17,12 +17,13 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.JTextField;
-import modelo.Item;
 import modelo.Tipo;
 import vista.VentanaBase;
 import vista.PLabel;
 
 /**
+ * Se encarga de mostrar un combo con los items y este se puede modificar segun
+ * el valor que contenga el textfield.
  *
  * @author David 22/09/2015
  */

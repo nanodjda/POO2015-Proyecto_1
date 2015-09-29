@@ -1,7 +1,7 @@
 /**
 * David Diaz Aguilar - 2014004725
 * Arturo Luna Izaguirre - 2014110993
-* Esteban Chinchilla Fallas - 2014
+* Esteban Chinchilla Fallas - 2014001360
 */
 
 package vista.Reportes;
@@ -21,11 +21,12 @@ import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import modelo.Categoria;
 import modelo.Item;
-import modelo.Tipo;
 import vista.PLabel;
 import vista.VentanaBase;
 
 /**
+ * Se encarga de mostrar un panel que contiene un tabla, dependiendo de la categoria
+ * seleccionada se llena la tabla con dicha categoria.
  *
  * @author David 28/09/2015
  */
@@ -71,7 +72,7 @@ public class ReporteCategorias extends VentanaBase {
         
         titulo.setBounds(225, 15, 350, 50);
         categorias.setBounds(35, 100, 100, 30);
-        cmbCategorias.setBounds(140, 100, 100, 30);
+        cmbCategorias.setBounds(140, 100, 150, 30);
         scrollPane.setBounds(35, 150, 565, 300);
         
         add(titulo);
