@@ -43,7 +43,7 @@ public class ModificarPrestamo extends VentanaBase {
             public void actionPerformed(ActionEvent e) {
                 int pos = cmbPrestamos.getSelectedIndex();
                 new EditarPrestamo(miCoordinador.getMiVentanaPrincipal(), 
-                        "Editar Préstamo: " + Principal.getPrestamos().get(pos), 
+                        "Editar Préstamo: " + Principal.getPrestamos().get(pos).getIdPrestamo(), 
                         700, 550, Principal.getPrestamos().get(pos)).setVisible(true);
             }
         });

@@ -47,7 +47,7 @@ public class ModificarPersona extends VentanaBase {
             public void actionPerformed(ActionEvent e) {
                 int pos = cmbPerson.getSelectedIndex();
                 EditarPersona nuevo = new EditarPersona(miCoordinador.getMiVentanaPrincipal(), 
-                        "Modificar Persona: " + Principal.getPersonas().get(pos), 
+                        "Modificar Persona: " + Principal.getPersonas().get(pos).getCedula(), 
                         700, 550, Principal.getPersonas().get(pos));
                 nuevo.addWindowListener(new WindowAdapter() {
                     @Override

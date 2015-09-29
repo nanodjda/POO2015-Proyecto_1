@@ -75,7 +75,7 @@ public class EliminarPersona extends VentanaBase {
         cmbPerson.removeAllItems();
         ArrayList<String> var1 = new ArrayList<>();
         for(Persona per : Principal.getPersonas()){
-            var1.add(per.getNombre());
+            var1.add(per.getNombre() + " " + per.getPrimerApellido() + " " + per.getSegundoApellido());
         }
         for(String str : var1) {
             cmbPerson.addItem(str);
