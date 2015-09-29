@@ -1,7 +1,7 @@
 /**
 * David Diaz Aguilar - 2014004725
 * Arturo Luna Izaguirre - 2014110993
-* Esteban Chinchilla Fallas - 2014
+* Esteban Chinchilla Fallas - 2014001360
 */
 
 package vista.Personas;
@@ -21,6 +21,7 @@ import vista.VentanaBase;
 import vista.PLabel;
 
 /**
+ * Se encarga de crear la ventana para eliminar una persona.
  *
  * @author David 22/09/2015
  */
@@ -45,14 +46,20 @@ public class EliminarPersona extends VentanaBase {
         eliminar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                int pos = cmbPerson.getSelectedIndex();
-                Principal.getPersonas().remove(pos);
-                JOptionPane.showMessageDialog(miCoordinador.getMiVentanaPrincipal(), "El item fue eliminado exitosamente.");
-                if(Principal.getPersonas().size() > 0){
-                    miCoordinador.getMiEliminarPersona().iniciar();
-                    miCoordinador.getMiVentanaPrincipal().setPrincipal(miCoordinador.getMiEliminarPersona());
-                } else {
-                    miCoordinador.getMiVentanaPrincipal().setPrincipal(miCoordinador.getMiVentanaAdminPersonas());
+                try {
+                    validar();
+                    int pos = cmbPerson.getSelectedIndex();
+                    Principal.getPersonas().remove(pos);
+                    JOptionPane.showMessageDialog(miCoordinador.getMiVentanaPrincipal(), "La persona fue eliminada exitosamente.");
+                    if(Principal.getPersonas().size() > 0){
+                        miCoordinador.getMiEliminarPersona().iniciar();
+                        miCoordinador.getMiVentanaPrincipal().setPrincipal(miCoordinador.getMiEliminarPersona());
+                    } else {
+                        miCoordinador.getMiVentanaPrincipal().setPrincipal(miCoordinador.getMiVentanaAdminPersonas());
+                    }
+                } catch (Exception ex) {
+                    JOptionPane.showMessageDialog(null,ex.getMessage(),
+                    "Advertencia",JOptionPane.WARNING_MESSAGE);
                 }
             }
         });
@@ -75,5 +82,11 @@ public class EliminarPersona extends VentanaBase {
         }
     }
     
-    /*********** Getters/Setters ***********/
+    public void validar() throws Exception{
+        int pos = cmbPerson.getSelectedIndex();
+        if(!Principal.getPersonas().get(pos).getPrestamos().isEmpty()){
+            throw new Exception("No se puede eliminar esta persona\n"
+                    + "debido a que tiene prestamos pendientes.");
+        }
+    }
 }

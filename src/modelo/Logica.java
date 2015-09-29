@@ -1,7 +1,7 @@
 /**
 * David Diaz Aguilar - 2014004725
 * Arturo Luna Izaguirre - 2014110993
-* Esteban Chinchilla Fallas - 2014
+* Esteban Chinchilla Fallas - 2014001630
 */
 
 package modelo;
@@ -20,7 +20,9 @@ import javax.swing.table.DefaultTableModel;
 import vista.miVentanaAlerta;
 
 /**
- *
+ * Esta clase se encarga de la carga y guardado de datos de la aplicacion en un
+ * archivo. Tambien se encarga de mostrar una ventana con las alertas.
+ * 
  * @author David 17/09/2015
  */
 public class Logica {
@@ -107,7 +109,9 @@ public class Logica {
             Object[] newRow={txt1, txt2, txt3, txt4};
             dtm.addRow(newRow);
         }
-        new miVentanaAlerta(coordinador.getMiVentanaPrincipal(), "Alertas", 700, 550, dtm).setVisible(true);
+        miVentanaAlerta alertas = new miVentanaAlerta(coordinador.getMiVentanaPrincipal(), "Alertas", 700, 500, dtm);
+        alertas.setLocationRelativeTo(null);
+        alertas.setVisible(true);
     }
     
     /*********** Getters/Setters ***********/

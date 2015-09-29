@@ -1,7 +1,7 @@
 /**
 * David Diaz Aguilar - 2014004725
 * Arturo Luna Izaguirre - 2014110993
-* Esteban Chinchilla Fallas - 2014
+* Esteban Chinchilla Fallas - 2014001360
 */
 
 package vista.Items;
@@ -28,6 +28,8 @@ import modelo.Tipo;
 import vista.VentanaBase;
 
 /**
+ * 
+ * Esta clase se encarga de crear el panel para agregar items
  *
  * @author David 19/09/2015
  */

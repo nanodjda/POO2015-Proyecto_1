@@ -1,7 +1,7 @@
 /**
 * David Diaz Aguilar - 2014004725
 * Arturo Luna Izaguirre - 2014110993
-* Esteban Chinchilla Fallas - 2014
+* Esteban Chinchilla Fallas - 2014001630
 */
 
 package vista;
@@ -16,12 +16,12 @@ import java.awt.event.WindowEvent;
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JFrame;
-import javax.swing.JMenuBar;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.ScrollPaneConstants;
 
 /**
+ * Esta clase se encarga de crear el JFrame principal del sistema.
  *
  * @author David 17/09/2015
  */
@@ -34,6 +34,13 @@ public class VentanaPrincipal extends JFrame{
     private int ancho_lateral, ancho_principal, alto;
     
     /************* Constructor *************/
+    /**
+     * Crea la ventana con los datos dados, tambien define el ancho de la barra
+     * lateral y el ancho del espacio principal.
+     * 
+     * @param pAncho - Ancho de la ventana
+     * @param pAlto - Alto de la ventana
+     */
     public VentanaPrincipal(int pAncho, int pAlto){
         this.ancho_lateral = pAncho / 4;
         this.ancho_principal = pAncho - this.ancho_lateral;
@@ -43,15 +50,12 @@ public class VentanaPrincipal extends JFrame{
     
     /****************Metodos****************/
     private void iniciar(){
-        // Declaracion básica de la venta
         setLayout(null);
         setSize(ancho_lateral + ancho_principal + 15, alto + 60);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setTitle("La Cueva 2.0");
+        setLocationRelativeTo(null);
         setResizable(false);
-        
-        BarraMenu barra = new BarraMenu();
-        this.setJMenuBar(barra);
         
         lateral = new PanelLateral(ancho_lateral, alto);
         lateral.setBounds(0, 0, ancho_lateral, alto);
@@ -159,5 +163,9 @@ public class VentanaPrincipal extends JFrame{
         this.add(this.lateral);
         this.revalidate();
         this.repaint();
+    }
+    
+    public void setBarraMenu(BarraMenu pBarraMenu){
+        this.setJMenuBar(pBarraMenu);
     }
 }

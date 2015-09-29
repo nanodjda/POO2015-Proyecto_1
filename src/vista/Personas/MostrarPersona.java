@@ -1,7 +1,7 @@
 /**
 * David Diaz Aguilar - 2014004725
 * Arturo Luna Izaguirre - 2014110993
-* Esteban Chinchilla Fallas - 2014
+* Esteban Chinchilla Fallas - 2014001360
 */
 
 package vista.Personas;
@@ -21,6 +21,7 @@ import vista.VentanaBase;
 import vista.PLabel;
 
 /**
+ * Se encarga de crear la ventana para mostrar una persona.
  *
  * @author David 22/09/2015
  */

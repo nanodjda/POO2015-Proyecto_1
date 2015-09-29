@@ -1,7 +1,7 @@
 /**
 * David Diaz Aguilar - 2014004725
 * Arturo Luna Izaguirre - 2014110993
-* Esteban Chinchilla Fallas - 2014
+* Esteban Chinchilla Fallas - 2014001360
 */
 
 package vista;
@@ -13,6 +13,8 @@ import java.util.ArrayList;
 import javax.swing.JButton;
 
 /**
+ * Crea la instancia de un PanelLateral con un fondo, y un Layout para acomodar
+ * los botones que se le agreguen.
  *
  * @author David 17/09/2015
  */
@@ -39,15 +41,13 @@ public class PanelLateral extends PanelConFondo{
     /****************Metodos****************/
     
     /**
-     * Metodos
-     * @param boton
+     * Recibe como parametro un boton que será agregado al PanelLateral.
+     * @param boton - Boton a agregar.
      */
-    
     public void agregarBoton(JButton boton){
-        //Agrega boton al panel
         
         GridBagConstraints gbc = new GridBagConstraints();
-        //boton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vista/imagenes/item.jpg")));
+        
         gbc.anchor = GridBagConstraints.WEST;;
         gbc.fill = GridBagConstraints.BOTH;
         gbc.gridx = 1;
@@ -55,9 +55,7 @@ public class PanelLateral extends PanelConFondo{
         gbc.insets = new Insets(15, 15, 15, 15);
         add(boton, gbc);
 
-        //Incrementa el número de botones
         cant_botones++;
     }
-    /*********** Getters/Setters ***********/
 
 }

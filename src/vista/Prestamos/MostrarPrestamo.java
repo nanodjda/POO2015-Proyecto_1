@@ -1,7 +1,7 @@
 /**
 * David Diaz Aguilar - 2014004725
 * Arturo Luna Izaguirre - 2014110993
-* Esteban Chinchilla Fallas - 2014
+* Esteban Chinchilla Fallas - 2014001360
 */
 
 package vista.Prestamos;
@@ -20,6 +20,8 @@ import vista.VentanaBase;
 import vista.PLabel;
 
 /**
+ * Se encarga de crear una instancia de una ventana para mostrar los prestamos
+ * en el sistema.
  *
  * @author David 22/09/2015
  */

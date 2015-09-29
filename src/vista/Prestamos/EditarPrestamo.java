@@ -1,7 +1,7 @@
 /**
 * David Diaz Aguilar - 2014004725
 * Arturo Luna Izaguirre - 2014110993
-* Esteban Chinchilla Fallas - 2014
+* Esteban Chinchilla Fallas - 2014001360
 */
 
 package vista.Prestamos;
@@ -28,6 +28,7 @@ import vista.VentanaEmergente;
 import vista.PLabel;
 
 /**
+ * Se encarga de desplegar una ventana emergente para poder modificar un prestamo
  *
  * @author David 23/09/2015
  */

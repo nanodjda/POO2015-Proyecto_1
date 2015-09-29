@@ -1,7 +1,7 @@
 /**
 * David Diaz Aguilar - 2014004725
 * Arturo Luna Izaguirre - 2014110993
-* Esteban Chinchilla Fallas - 2014
+* Esteban Chinchilla Fallas - 2014001630
 */
 
 package modelo;
@@ -12,6 +12,8 @@ import java.util.ArrayList;
 import java.util.Date;
 
 /**
+ * Se encarga de crear la instancia de un Prestamo.
+ * 
  * @author Arturo 19/09/2015
  * @author David 17/09/2015
  */
@@ -24,6 +26,13 @@ public class Prestamo implements Serializable {
     private Alerta alerta;
 
     /************* Constructor *************/
+    /**
+     * Crea la instancia de un Prestamo con una alerta unica y no recurrente.
+     * Se asocia una persona al prestamo y se le agrega el prestamo a la persona.
+     * 
+     * @param pPersona - Persona a la que se asociara el prestamo y viceversa.
+     * @param pFecha_final - Fecha en la que se vence el préstamo.
+     */
     public Prestamo(Persona pPersona, Date pFecha_final){
         this.persona = pPersona;
         Principal.idGlobalPrestamo += 1;
@@ -32,6 +41,13 @@ public class Prestamo implements Serializable {
         this.alerta = new Alerta(pFecha_final);
     }
     
+    /**
+     * Crea la instancia de un Prestamo con una alerta recurrente.
+     * Se asocia una persona al prestamo y se le agrega el prestamo a la persona.
+     * 
+     * @param pPersona - Persona a la que se asociara el prestamo y viceversa.
+     * @param cantidad_dias - Intervalo de tiempo en el que se avisara la alerta.
+     */
     public Prestamo(Persona pPersona, int cantidad_dias){
         this.persona = pPersona;
         Principal.idGlobalPrestamo += 1;
@@ -42,25 +58,20 @@ public class Prestamo implements Serializable {
 
     /****************Metodos****************/
 
-    /*********** Getters/Setters ***********/
-    public int getIdPrestamo() {
-        return idPrestamo;
-    }
-
-    public ArrayList<Item> getItems() {
-        return items;
-    }
-
     public void agregarItem(Item pItem) {
         items.add(pItem);
         pItem.setPoseedor(this.persona);
         pItem.prestado();
     }
     
-    public void borrarItem(Item pItem) {
-        items.remove(pItem);
-        pItem.setPoseedor(null);
-        pItem.noPrestado();
+    /*********** Getters/Setters ***********/
+    
+    public int getIdPrestamo() {
+        return idPrestamo;
+    }
+
+    public ArrayList<Item> getItems() {
+        return items;
     }
 
     public Alerta getAlerta() {

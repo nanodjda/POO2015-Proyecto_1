@@ -1,7 +1,7 @@
 /**
 * David Diaz Aguilar - 2014004725
 * Arturo Luna Izaguirre - 2014110993
-* Esteban Chinchilla Fallas - 2014
+* Esteban Chinchilla Fallas - 2014001630
 */
 
 package vista;
@@ -13,29 +13,34 @@ import java.awt.image.BufferedImage;
 import javax.swing.border.Border;
 
 /**
- *
+ * Crea un borde con la imagen dada
+ * 
  * @author David 19/09/2015
  */
-public class BgBorder implements Border 
-{
-	private BufferedImage mImagen = null;
+public class BgBorder implements Border {
+    
+    /************** Variables **************/
+    private BufferedImage mImagen = null;
 
-	public BgBorder(BufferedImage pImagen) {
-		mImagen = pImagen;
-	}
+    /************* Constructor *************/
+    public BgBorder(BufferedImage pImagen) {
+            mImagen = pImagen;
+    }
 
-	public void paintBorder(Component c, Graphics g, int x, int y, int width,int height) 
-	{
-		if (mImagen != null) {
-			g.drawImage(mImagen, 0, 0, width, height, null);
-		}
-	}
+    /****************Metodos abstractos****************/
+    
+    public void paintBorder(Component c, Graphics g, int x, int y, int width,int height) 
+    {
+            if (mImagen != null) {
+                    g.drawImage(mImagen, 0, 0, width, height, null);
+            }
+    }
 
-	public Insets getBorderInsets(Component c) {
-		return new Insets(0, 0, 0, 0);
-	}
+    public Insets getBorderInsets(Component c) {
+            return new Insets(0, 0, 0, 0);
+    }
 
-	public boolean isBorderOpaque() {
-		return true;
-	}
+    public boolean isBorderOpaque() {
+            return true;
+    }
 }

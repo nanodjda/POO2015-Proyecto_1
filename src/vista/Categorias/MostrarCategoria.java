@@ -1,7 +1,7 @@
 /**
 * David Diaz Aguilar - 2014004725
 * Arturo Luna Izaguirre - 2014110993
-* Esteban Chinchilla Fallas - 2014
+* Esteban Chinchilla Fallas - 2014001360
 */
 
 package vista.Categorias;
@@ -21,6 +21,7 @@ import vista.VentanaBase;
 import vista.PLabel;
 
 /**
+ * Crea la instancia de la ventana MostrarCategoria
  *
  * @author David 22/09/2015
  */

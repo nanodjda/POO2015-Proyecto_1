@@ -1,7 +1,7 @@
 /**
 * David Diaz Aguilar - 2014004725
 * Arturo Luna Izaguirre - 2014110993
-* Esteban Chinchilla Fallas - 2014
+* Esteban Chinchilla Fallas - 2014001630
 */
 
 package modelo;
@@ -11,6 +11,8 @@ import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
+ * Esta clase se encarga de crear la instancia de un Item.
+ * 
  * @author Arturo 18/09/2015
  * @author David 17/09/2015
  */
@@ -22,10 +24,18 @@ public class Item implements Serializable{
     private String descripcion = "Sin descripcion";
     private Tipo tipo;
     private ArrayList<Categoria> categorias = new ArrayList<>();
-    private Persona poseedor;
+    private Persona poseedor = null;
     private boolean estado = false;
             
     /************* Constructor *************/
+    /**
+     * Crea un item con los datos básicos importantes de la instancia.
+     * Luego de instanciado el item, se aumenta en 1 el idGlobalItem.
+     * 
+     * @param pNombre - Nombre del item.
+     * @param pCodigo - Codigo unico del item.
+     * @param pTipo - Tipo unico del item.
+     */
     public Item(String pNombre, String pCodigo, Tipo pTipo){
         this.nombre = pNombre;
         this.tipo = pTipo;
@@ -40,6 +50,7 @@ public class Item implements Serializable{
 
     public void noPrestado() {
         this.estado = false;
+        this.poseedor = null;
     }
     
     public void agregarCategoria(Categoria pCategoria){
@@ -54,6 +65,10 @@ public class Item implements Serializable{
     public String getNombre() {
         return nombre;
     }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
     
     public String getDescripcion() {
         return descripcion;
@@ -62,11 +77,7 @@ public class Item implements Serializable{
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
     }
-
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-
+    
     public String getCodigo() {
         return codigo;
     }

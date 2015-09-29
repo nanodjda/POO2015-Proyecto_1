@@ -1,7 +1,7 @@
 /**
 * David Diaz Aguilar - 2014004725
 * Arturo Luna Izaguirre - 2014110993
-* Esteban Chinchilla Fallas - 2014
+* Esteban Chinchilla Fallas - 2014001360
 */
 
 package vista.Prestamos;
@@ -37,6 +37,7 @@ import vista.PLabel;
 import vista.PRadioButton;
 
 /**
+ * Crea la ventana para agregar prestamos.
  *
  * @author David 22/09/2015
  */
@@ -44,8 +45,8 @@ public class AgregarPrestamo extends VentanaBase {
 
     /************** Variables **************/
     private JList cmbItems;
-    private JComboBox cmbPersonas;
     private JScrollPane scrItems;
+    private JComboBox cmbPersonas;
     private JFormattedTextField fecha_final;
     private JTextField cant_dias;
     private JLabel lblAlertaFech;
@@ -56,7 +57,9 @@ public class AgregarPrestamo extends VentanaBase {
     SimpleDateFormat formatoFecha = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault());
     
     /************* Constructor *************/
-    
+    /**
+     * LLama a la funcion iniciar que se encarga de crear los componentes de la ventana
+     */
     public AgregarPrestamo(){
         iniciar();
     }
@@ -98,7 +101,6 @@ public class AgregarPrestamo extends VentanaBase {
         cant_dias.setVisible(false);
         
         rb.add(opc1);
-        
         opc1.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -112,7 +114,6 @@ public class AgregarPrestamo extends VentanaBase {
         });
         
         rb.add(opc2);
-        
         opc2.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -124,7 +125,7 @@ public class AgregarPrestamo extends VentanaBase {
                 revalidate();
             }
         });
-                
+        
         titulo.setBounds(250, 15, 350, 50);
         lblNombre.setBounds(10, 100, 100, 30);
         cmbPersonas.setBounds(10, 140, 300, 30);
@@ -222,7 +223,6 @@ public class AgregarPrestamo extends VentanaBase {
             validarFecha(fecha_final.getText());
             
             Date fec = formatoFecha.parse(fecha_final.getText());
-            
             if(new Date().compareTo(fec) > 0){
                 throw new Exception("Debe ingresar una fecha mayor al dia actual.");
             }

@@ -1,7 +1,7 @@
 /**
 * David Diaz Aguilar - 2014004725
 * Arturo Luna Izaguirre - 2014110993
-* Esteban Chinchilla Fallas - 2014
+* Esteban Chinchilla Fallas - 2014001360
 */
 
 package vista.Items;
@@ -25,6 +25,8 @@ import vista.VentanaEmergente;
 import vista.PLabel;
 
 /**
+ * Esta clase se encarga de crear un JDialog para ver items que es 
+ * pasado por parametro.
  *
  * @author David 22/09/2015
  */
@@ -38,6 +40,15 @@ public class VerItem extends VentanaEmergente{
     private JButton aceptar;
     
     /************* Constructor *************/
+    /**
+     * Recibe los siguientes datos:
+     * 
+     * @param frame - JFrame padre.
+     * @param title - Titulo de la ventana
+     * @param ancho - Ancho de la ventana
+     * @param alto - Alto de la ventana
+     * @param pItem - Item a mostrar en la ventana
+     */
     public VerItem(JFrame frame, String title, int ancho, int alto, Item pItem){
         super(frame, title, ancho, alto);
         JLabel titulo = new JLabel("Ver Item");
@@ -130,9 +141,4 @@ public class VerItem extends VentanaEmergente{
         
         
     }
-    /****************Metodos****************/
-        
-
-    /*********** Getters/Setters ***********/
-
 }

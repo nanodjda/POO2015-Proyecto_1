@@ -1,11 +1,12 @@
 /**
 * David Diaz Aguilar - 2014004725
 * Arturo Luna Izaguirre - 2014110993
-* Esteban Chinchilla Fallas - 2014
+* Esteban Chinchilla Fallas - 2014001360
 */
 
 package vista.Personas;
 
+import controlador.Principal;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
@@ -22,6 +23,7 @@ import vista.VentanaEmergente;
 import vista.PLabel;
 
 /**
+ * Se encarga de crear la ventana para modificar los datos de una persona.
  *
  * @author David 22/09/2015
  */
@@ -124,6 +126,12 @@ public class EditarPersona extends VentanaEmergente{
                 txtSegundo.getText().isEmpty()
                 ){
             throw new Exception("Debes llenar los campos obligatorios.");
+        }
+        
+        for(Persona pPersona : Principal.getPersonas()){
+            if(txtCedula.getText().equals(pPersona.getCedula())){
+                throw new Exception("Ya existe esta persona.");
+            }
         }
     }
     

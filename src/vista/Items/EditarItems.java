@@ -1,7 +1,7 @@
 /**
 * David Diaz Aguilar - 2014004725
 * Arturo Luna Izaguirre - 2014110993
-* Esteban Chinchilla Fallas - 2014
+* Esteban Chinchilla Fallas - 2014001360
 */
 
 package vista.Items;
@@ -20,6 +20,8 @@ import vista.VentanaBase;
 import vista.PLabel;
 
 /**
+ * Esta clase se encarga de crear el panel para mostrar una lista de items
+ * que pueden ser modificados.
  *
  * @author David 17/09/2015
  */

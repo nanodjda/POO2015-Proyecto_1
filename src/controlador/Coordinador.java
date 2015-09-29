@@ -25,6 +25,7 @@ public class Coordinador {
     /************** Variables del coordinador**************/
     private Logica logica;
     private VentanaPrincipal miVentanaPrincipal;
+    private BarraMenu miBarraMenu;
     
     private VentanaAdminItems miVentanaAdminItems;
     private AgregarItem miAgregarItem;
@@ -323,5 +324,13 @@ public class Coordinador {
 
     public void setMiReporteCategorias(ReporteCategorias miReporteCategorias) {
         this.miReporteCategorias = miReporteCategorias;
+    }
+
+    public BarraMenu getMiBarraMenu() {
+        return miBarraMenu;
+    }
+
+    public void setMiBarraMenu(BarraMenu miBarraMenu) {
+        this.miBarraMenu = miBarraMenu;
     }
 }

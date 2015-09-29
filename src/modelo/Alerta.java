@@ -1,7 +1,7 @@
 /**
 * David Diaz Aguilar - 2014004725
 * Arturo Luna Izaguirre - 2014110993
-* Esteban Chinchilla Fallas - 2014
+* Esteban Chinchilla Fallas - 2014001630
 */
 
 package modelo;
@@ -14,8 +14,11 @@ import java.util.GregorianCalendar;
 import java.util.Locale;
 
 /**
- *
- * @author David 17/09/2015
+ * Crea una instancia de una Alerta que posee una fecha inicial
+ * y una fecha final, en caso de poseer una cantidad de dias esta sera
+ * una alerta recurrente
+ * 
+ * @author Arturo 17/09/2015
  */
 public class Alerta implements Serializable {
 
@@ -26,12 +29,20 @@ public class Alerta implements Serializable {
     private Date fec_fin;
     
     /************* Constructor *************/
+    /**
+     * Constructor en el caso de una alerta unica
+     * @param pFecha_fin - La fecha de vencimiento del prestamo u alerta
+     */
     public Alerta(Date pFecha_fin){
         this.tipo = "Unico";
         this.fec_ini = new Date();
         this.fec_fin = pFecha_fin;
     }
     
+    /**
+     * Constructor en el caso de un alerta recurrente
+     * @param pCantidad - Frecuencia de dias en la que se mostrara la alerta
+     */
     public Alerta(int pCantidad){
         this.tipo = "Recurrente";
         this.cantidad_dias = pCantidad;

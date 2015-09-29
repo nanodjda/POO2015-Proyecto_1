@@ -1,7 +1,7 @@
 /**
 * David Diaz Aguilar - 2014004725
 * Arturo Luna Izaguirre - 2014110993
-* Esteban Chinchilla Fallas - 2014
+* Esteban Chinchilla Fallas - 2014001360
 */
 
 package vista.Items;
@@ -22,6 +22,8 @@ import vista.VentanaBase;
 import vista.PLabel;
 
 /**
+ * Esta clase se encarga de eliminar un item que es seleccionado por medio de un
+ * combobox.
  *
  * @author David 22/09/2015
  */
@@ -88,6 +90,4 @@ public class EliminarItem extends VentanaBase{
             }
         }
     }
-    
-    /*********** Getters/Setters ***********/
 }

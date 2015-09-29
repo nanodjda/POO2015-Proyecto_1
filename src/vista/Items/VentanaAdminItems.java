@@ -1,7 +1,7 @@
 /**
 * David Diaz Aguilar - 2014004725
 * Arturo Luna Izaguirre - 2014110993
-* Esteban Chinchilla Fallas - 2014
+* Esteban Chinchilla Fallas - 2014001360
 */
 
 package vista.Items;
@@ -18,6 +18,7 @@ import vista.BotonFondo;
 import vista.VentanaBase;
 
 /**
+ * Esta clase se encarga de crear el panel para la administracion de Items
  *
  * @author David 19/09/2015
  */

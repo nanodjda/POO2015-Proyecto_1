@@ -1,7 +1,7 @@
 /**
 * David Diaz Aguilar - 2014004725
 * Arturo Luna Izaguirre - 2014110993
-* Esteban Chinchilla Fallas - 2014
+* Esteban Chinchilla Fallas - 2014001630
 */
 
 package vista;
@@ -14,7 +14,8 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 
 /**
- *
+ * Instancia una barra de menu con un coordinador.
+ * 
  * @author David 17/09/2015
  */
 public class BarraMenu extends JMenuBar{
@@ -28,6 +29,9 @@ public class BarraMenu extends JMenuBar{
     private JMenuItem mSalir = new JMenuItem("Salir");
     
     /************* Constructor *************/
+    /**
+     * Crea una barra de menu con la opcion de salir y mostrar la ventana de Alertas.
+     */
     public BarraMenu(){
         this.add(archivo);
         mSalir.addActionListener(new ActionListener() {
@@ -44,12 +48,8 @@ public class BarraMenu extends JMenuBar{
         
         archivo.add(alertas);
         archivo.add(mSalir);
-        
-        
     }
     
-    /****************Metodos****************/
-
     /*********** Getters/Setters ***********/
     
     public void setCoordinador(Coordinador pCoordinador){

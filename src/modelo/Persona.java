@@ -1,7 +1,7 @@
 /**
 * David Diaz Aguilar - 2014004725
 * Arturo Luna Izaguirre - 2014110993
-* Esteban Chinchilla Fallas - 2014
+* Esteban Chinchilla Fallas - 2014001630
 */
 
 package modelo;
@@ -10,6 +10,8 @@ import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
+ * Se encarga de instanciar una nueva Persona en el sistema.
+ * 
  * @author Esteban 18/09/2015
  * @author Arturo 18/09/2015
  * @author David 17/09/2015
@@ -26,6 +28,15 @@ public class Persona implements Serializable {
     private ArrayList<Integer> prestamos = new ArrayList();
  
     /************* Constructor *************/
+    
+    /**
+     * Crea una persona con los datos ingresados.
+     * 
+     * @param cedula - Identificador unico de la persona
+     * @param nombre - Primer nombre de la persona
+     * @param primerApellido - Primer apellido de la persona
+     * @param segundoApellido - Segundo apellido de la persona
+     */
     public Persona(String cedula, String nombre, String primerApellido, String segundoApellido) {
         this.cedula = cedula;
         this.nombre = nombre;
@@ -35,6 +46,18 @@ public class Persona implements Serializable {
 
     /****************Metodos****************/
 
+    public void agregarPrestamo(int pPrestamo) {
+        prestamos.add(pPrestamo);
+    }
+    
+    public void borrarPrestamo(int pIDPrestamo) {
+        for(int i = 0; i < prestamos.size(); i++){
+            if(prestamos.get(i).equals(pIDPrestamo)){
+                prestamos.remove(i);
+            }
+        }
+    }
+    
     /*********** Getters/Setters ***********/
     public String getCedula() {
         return cedula;
@@ -86,17 +109,5 @@ public class Persona implements Serializable {
 
     public ArrayList<Integer> getPrestamos() {
         return prestamos;
-    }
-
-    public void agregarPrestamo(int pPrestamo) {
-        prestamos.add(pPrestamo);
-    }
-    
-    public void borrarPrestamo(int pIDPrestamo) {
-        for(int i = 0; i < prestamos.size(); i++){
-            if(prestamos.get(i).equals(pIDPrestamo)){
-                prestamos.remove(i);
-            }
-        }
     }
 }

@@ -1,7 +1,7 @@
 /**
 * David Diaz Aguilar - 2014004725
 * Arturo Luna Izaguirre - 2014110993
-* Esteban Chinchilla Fallas - 2014
+* Esteban Chinchilla Fallas - 2014001360
 */
 
 package vista.Categorias;
@@ -16,6 +16,13 @@ import vista.BotonFondo;
 import vista.VentanaBase;
 
 /**
+ * Crea la instancia de la ventana de Administracion de Categorias.
+ * Desde esta ventana se hace el llamado a:
+ * 
+ * - Agregar Categorias
+ * - Modificar Categorias
+ * - Eliminar Categorias
+ * - Mostrar Categorias
  *
  * @author David 19/09/2015
  */

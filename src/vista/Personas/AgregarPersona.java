@@ -1,7 +1,7 @@
 /**
 * David Diaz Aguilar - 2014004725
 * Arturo Luna Izaguirre - 2014110993
-* Esteban Chinchilla Fallas - 2014
+* Esteban Chinchilla Fallas - 2014001360
 */
 
 package vista.Personas;
@@ -20,6 +20,7 @@ import vista.VentanaBase;
 import vista.PLabel;
 
 /**
+ * Se encarga de crear la ventana para agregar personas.
  *
  * @author David 22/09/2015
  */
@@ -129,6 +130,12 @@ public class AgregarPersona extends VentanaBase{
                 txtSegundo.getText().isEmpty()
                 ){
             throw new Exception("Debes llenar los campos obligatorios.");
+        }
+        
+        for(Persona pPersona : Principal.getPersonas()){
+            if(txtCedula.getText().equals(pPersona.getCedula())){
+                throw new Exception("Ya existe esta persona.");
+            }
         }
     }
 }

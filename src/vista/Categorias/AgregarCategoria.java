@@ -1,7 +1,7 @@
 /**
 * David Diaz Aguilar - 2014004725
 * Arturo Luna Izaguirre - 2014110993
-* Esteban Chinchilla Fallas - 2014
+* Esteban Chinchilla Fallas - 2014001360
 */
 
 package vista.Categorias;
@@ -20,6 +20,7 @@ import vista.VentanaBase;
 import vista.PLabel;
 
 /**
+ * Crea la instancia de la ventana AgregarCategoria
  *
  * @author David 22/09/2015
  */
@@ -29,7 +30,6 @@ public class AgregarCategoria extends VentanaBase{
     private JTextField txtNombre;
     
     /************* Constructor *************/
-    
     public AgregarCategoria() {
         iniciar();
     }

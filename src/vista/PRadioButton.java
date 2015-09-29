@@ -11,23 +11,22 @@ import java.awt.Color;
 import javax.swing.JRadioButton;
 
 /**
- *
+ * Crea un RadioButton sin fondo y con un nuevo color de fuente
+ * 
  * @author David 27/09/2015
  */
 public class PRadioButton extends JRadioButton {
 
-    /************** Variables **************/
-
     /************* Constructor *************/
+    /**
+     * Crea un RadioButton con el String ingresado
+     * @param pTitulo - Texto que desplegará el JRadioButton
+     */
     public PRadioButton(String pTitulo){
         super(pTitulo);
         setFont(Principal.fuente1);
         setForeground(new Color(159, 227, 255));
         setOpaque(false);
     }
-
-    /****************Metodos****************/
-
-    /*********** Getters/Setters ***********/
 
 }

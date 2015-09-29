@@ -1,7 +1,7 @@
 /**
 * David Diaz Aguilar - 2014004725
 * Arturo Luna Izaguirre - 2014110993
-* Esteban Chinchilla Fallas - 2014
+* Esteban Chinchilla Fallas - 2014001360
 */
 
 package vista.Prestamos;
@@ -15,13 +15,12 @@ import java.util.ArrayList;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
-import modelo.Persona;
 import modelo.Prestamo;
-import vista.Personas.EditarPersona;
 import vista.VentanaBase;
 import vista.PLabel;
 
 /**
+ * Se encarga de crear una ventana en la que se puede elegir un prestamo a editar
  *
  * @author David 22/09/2015
  */
@@ -71,6 +70,4 @@ public class ModificarPrestamo extends VentanaBase {
             cmbPrestamos.addItem(str);
         }
     }
-    
-    /*********** Getters/Setters ***********/
 }

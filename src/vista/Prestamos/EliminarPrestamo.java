@@ -1,7 +1,7 @@
 /**
 * David Diaz Aguilar - 2014004725
 * Arturo Luna Izaguirre - 2014110993
-* Esteban Chinchilla Fallas - 2014
+* Esteban Chinchilla Fallas - 2014001360
 */
 
 package vista.Prestamos;
@@ -17,11 +17,14 @@ import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import modelo.Item;
+import modelo.Persona;
 import modelo.Prestamo;
 import vista.VentanaBase;
 import vista.PLabel;
 
 /**
+ * Se encarga de crear una ventana que muestra pos prestamos existentes y
+ * permite finalizarlos.
  *
  * @author David 22/09/2015
  */
@@ -47,8 +50,16 @@ public class EliminarPrestamo extends VentanaBase {
                     pItem.noPrestado();
                 }
                 
+                for(Persona p : Principal.getPersonas()){
+                    for(int i = 0; i < p.getPrestamos().size(); i++){
+                        if(p.getPrestamos().get(i) == Principal.getPrestamos().get(pos).getIdPrestamo()){
+                            p.getPrestamos().remove(i);
+                        }
+                    }
+                }
+                
                 Principal.getPrestamos().remove(pos);
-                JOptionPane.showMessageDialog(getRootPane(), "El préstamo ha sido eliminado.");
+                JOptionPane.showMessageDialog(getRootPane(), "El préstamo ha sido finalizado.");
                 if(Principal.getPrestamos().size() > 0){
                     miCoordinador.getMiEliminarPrestamo().iniciar();
                     miCoordinador.getMiVentanaPrincipal().setPrincipal(miCoordinador.getMiEliminarPrestamo());
@@ -80,6 +91,4 @@ public class EliminarPrestamo extends VentanaBase {
             cmbPrestamos.addItem(str);
         }
     }
-    
-    /*********** Getters/Setters ***********/
 }

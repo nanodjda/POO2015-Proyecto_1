@@ -1,7 +1,7 @@
 /**
 * David Diaz Aguilar - 2014004725
 * Arturo Luna Izaguirre - 2014110993
-* Esteban Chinchilla Fallas - 2014
+* Esteban Chinchilla Fallas - 2014001360
 */
 
 package vista.Personas;
@@ -28,9 +28,10 @@ import modelo.Persona;
 import modelo.Prestamo;
 import vista.VentanaEmergente;
 import vista.PLabel;
-import static vista.Reportes.ReporteItems.ordenarItems;
 
 /**
+ * Se encarga de crear la ventana para ver una persona que es obtenida como
+ * parametro.
  *
  * @author David 22/09/2015
  */
@@ -150,23 +151,22 @@ public class verPersona extends VentanaEmergente{
     public void cargarDatos(Persona pPersona){
         dtm.setRowCount(0);
         for(Item pItem : Principal.getItems()){
-            if(pItem.getPoseedor().equals(pPersona) && pItem.getEstado() == true){
-                String txt1 = pItem.getNombre();
-                String txt2 = pItem.getDescripcion();
-                String txt3 = "";
-                String txt4 = "";
-                for(Prestamo p : Principal.getPrestamos()){
-                    if(p.getItems().contains(pItem)){
-                        txt3 = String.valueOf(p.getIdPrestamo());
-                        txt4 = formatoFecha.format(p.getAlerta().getFec_fin());
+            if(pItem.getPoseedor() != null){
+                if(pItem.getPoseedor().equals(pPersona) && pItem.getEstado() == true){
+                    String txt1 = pItem.getNombre();
+                    String txt2 = pItem.getDescripcion();
+                    String txt3 = "";
+                    String txt4 = "";
+                    for(Prestamo p : Principal.getPrestamos()){
+                        if(p.getItems().contains(pItem)){
+                            txt3 = String.valueOf(p.getIdPrestamo());
+                            txt4 = formatoFecha.format(p.getAlerta().getFec_fin());
+                        }
                     }
+                    Object[] newRow={txt1, txt2, txt3, txt4};
+                    dtm.addRow(newRow);
                 }
-                Object[] newRow={txt1, txt2, txt3, txt4};
-                dtm.addRow(newRow);
             }
         }
-    }    
-    
-    /*********** Getters/Setters ***********/
-
+    }
 }
