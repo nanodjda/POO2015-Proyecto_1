@@ -7,9 +7,12 @@
 package vista;
 
 import controlador.Coordinador;
+import controlador.Principal;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -47,7 +50,7 @@ public class VentanaPrincipal extends JFrame{
         setTitle("La Cueva 2.0");
         setResizable(false);
         
-        JMenuBar barra = new BarraMenu();
+        BarraMenu barra = new BarraMenu();
         this.setJMenuBar(barra);
         
         lateral = new PanelLateral(ancho_lateral, alto);
@@ -109,10 +112,23 @@ public class VentanaPrincipal extends JFrame{
 	btnReporte.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                setPrincipal(miCoordinador.getMiVentanaTipo());
+                setPrincipal(miCoordinador.getMiVentanaAdminReportes());
             }
         });
         lateral.agregarBoton(btnReporte);
+        
+        addWindowListener(new WindowAdapter(){
+            public void windowClosing(WindowEvent e){
+                miCoordinador.getMiLogica().guardarDatos(Principal.getItems(), 
+                        Principal.getTipos(), 
+                        Principal.getCategorias(), 
+                        Principal.getPersonas(), 
+                        Principal.getPrestamos(), 
+                        Principal.idGlobalPrestamo,
+                        Principal.idGlobalItem);
+                }
+            }
+        );
         
     }
     
@@ -143,5 +159,5 @@ public class VentanaPrincipal extends JFrame{
         this.add(this.lateral);
         this.revalidate();
         this.repaint();
-    }    
+    }
 }

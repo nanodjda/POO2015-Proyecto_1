@@ -1,7 +1,7 @@
 /**
 * David Diaz Aguilar - 2014004725
 * Arturo Luna Izaguirre - 2014110993
-* Esteban Chinchilla Fallas - 2014
+* Esteban Chinchilla Fallas - 2014001630
 */
 
 package controlador;
@@ -11,6 +11,7 @@ import vista.Prestamos.*;
 import vista.Categorias.*;
 import vista.Tipos.*;
 import vista.Items.*;
+import vista.Reportes.*;
 import java.awt.Font;
 import java.util.ArrayList;
 import modelo.Logica;
@@ -24,7 +25,7 @@ import vista.Tipos.AgregarTipo;
  */
 public class Principal {
 
-    /************** Variables **************/
+    /************** Variables Globales de la aplicacion**************/
     
     public static Font fuente1 = new Font("Arial", Font.BOLD, 14);
     private static ArrayList<Item> items = new ArrayList<Item>();
@@ -35,6 +36,8 @@ public class Principal {
     public static int idGlobalPrestamo = 0;
     public static int idGlobalItem = 0;
 
+    //Declaracion de todas las ventanas
+    
     Logica logica;
     Coordinador coordinador;
     VentanaPrincipal ventanaPrincipal;
@@ -70,6 +73,11 @@ public class Principal {
     EliminarPrestamo ventanaEliminarPrestamo;
     MostrarPrestamo ventanaMostrarPrestamo;
     
+    VentanaAdminReportes ventanaAdminReportes;
+    ReporteItems ventanaReporteItems;
+    ReporteTipos ventanaReporteTipos;
+    ReporteCategorias ventanaReporteCategorias;
+    
     int alto, ancho;
     
     /************* Constructor *************/
@@ -78,18 +86,6 @@ public class Principal {
     */
 public static void main(String[] args) {
     Principal miPrincipal=new Principal();
-    miPrincipal.setTipo(new Tipo("Default"));
-    miPrincipal.setTipo(new Tipo("Primero"));
-    miPrincipal.setTipo(new Tipo("Segundo"));
-    miPrincipal.setTipo(new Tipo("Uno mas"));
-    miPrincipal.setCategoria(new Categoria("Categoria 1"));
-    miPrincipal.setCategoria(new Categoria("Categoria 2"));
-    miPrincipal.setCategoria(new Categoria("Categoria 3"));
-    miPrincipal.setPersona(new Persona("1", "David", "Diaz", "Aguilar"));
-    miPrincipal.setItem(new Item("Item1", "1", Principal.getTipos().get(1)));
-    miPrincipal.setItem(new Item("Item2", "2", Principal.getTipos().get(2)));
-    miPrincipal.setItem(new Item("Item3", "3", Principal.getTipos().get(3)));
-    
     miPrincipal.iniciarVentanas();
 }
     
@@ -132,6 +128,10 @@ private void iniciarVentanas() {
     ventanaEliminarPrestamo = new EliminarPrestamo();
     ventanaMostrarPrestamo = new MostrarPrestamo();
     
+    ventanaAdminReportes = new VentanaAdminReportes();
+    ventanaReporteItems = new ReporteItems();
+    ventanaReporteTipos = new ReporteTipos();
+    ventanaReporteCategorias = new ReporteCategorias();
     
     logica=new Logica();
     
@@ -171,6 +171,11 @@ private void iniciarVentanas() {
     ventanaEliminarPrestamo.setCoordinador(coordinador);
     ventanaMostrarPrestamo.setCoordinador(coordinador);
     
+    ventanaAdminReportes.setCoordinador(coordinador);
+    ventanaReporteItems.setCoordinador(coordinador);
+    ventanaReporteTipos.setCoordinador(coordinador);
+    ventanaReporteCategorias.setCoordinador(coordinador);
+    
     logica.setCoordinador(coordinador);
 
     /*Se establecen relaciones con la clase coordinador*/
@@ -207,8 +212,20 @@ private void iniciarVentanas() {
     coordinador.setMiEliminarPrestamo(ventanaEliminarPrestamo);
     coordinador.setMiMostrarPrestamo(ventanaMostrarPrestamo);
     
+    coordinador.setMiVentanaAdminReportes(ventanaAdminReportes);
+    coordinador.setMiReporteItems(ventanaReporteItems);
+    coordinador.setMiReporteTipos(ventanaReporteTipos);
+    coordinador.setMiReporteCategorias(ventanaReporteCategorias);
+    
     coordinador.setMiLogica(logica);
 
+    /**
+     * Se cargan los datos
+     */
+    
+    coordinador.getMiLogica().cargarDatos();
+    coordinador.getMiLogica().revisarAlertas();
+    
     ventanaPrincipal.setVisible(true);
 }
     
@@ -253,4 +270,36 @@ private void iniciarVentanas() {
         prestamos.add(pPrestamo);
     }
     
+    /**
+     * 
+     * Setter de datos guardados
+     */
+    
+    public static void setItems(ArrayList<Item> pItem){
+        items = pItem;
+    }
+    
+    public static void setTipos(ArrayList<Tipo> pTipo){
+        tipos = pTipo;
+    }
+    
+    public static void setCategorias(ArrayList<Categoria> pCate){
+        categorias = pCate;
+    }
+    
+    public static void setPersonas(ArrayList<Persona> pPersona){
+        personas = pPersona;
+    }
+    
+    public static void setPrestamos(ArrayList<Prestamo> pPrestamo){
+        prestamos = pPrestamo;
+    }
+    
+    public static void setIDPrestamos(int pID){
+        idGlobalPrestamo = pID;
+    }
+    
+    public static void setIDItems(int pID){
+        idGlobalItem = pID;
+    }
 }

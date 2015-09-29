@@ -1,7 +1,7 @@
 /**
 * David Diaz Aguilar - 2014004725
 * Arturo Luna Izaguirre - 2014110993
-* Esteban Chinchilla Fallas - 2014
+* Esteban Chinchilla Fallas - 2014001630
 */
 
 package controlador;
@@ -11,7 +11,7 @@ import vista.Tipos.*;
 import vista.Items.*;
 import vista.Categorias.*;
 import vista.Prestamos.*;
-
+import vista.Reportes.*;
 
 import modelo.Logica;
 import vista.*;
@@ -22,7 +22,7 @@ import vista.*;
  */
 public class Coordinador {
 
-    /************** Variables **************/
+    /************** Variables del coordinador**************/
     private Logica logica;
     private VentanaPrincipal miVentanaPrincipal;
     
@@ -57,11 +57,18 @@ public class Coordinador {
     private EliminarPrestamo miEliminarPrestamo;
     private MostrarPrestamo miMostrarPrestamo;
     
-    /************* Constructor *************/
-
-    /****************Metodos****************/
-
+    private VentanaAdminReportes miVentanaAdminReportes;
+    private ReporteItems miReporteItems;
+    private ReporteTipos miReporteTipos;
+    private ReporteCategorias miReporteCategorias;
+    
     /*********** Getters/Setters ***********/
+    
+    /**
+     * 
+     * Setters y getters de las ventanas que se instancian en el coordinador
+     */
+    
     public Logica getMiLogica() {
         return logica;
     }
@@ -285,7 +292,36 @@ public class Coordinador {
     public void setMiMostrarPrestamo(MostrarPrestamo miMostrarPrestamo) {
         this.miMostrarPrestamo = miMostrarPrestamo;
     }
-    
-    
-    
+
+    public VentanaAdminReportes getMiVentanaAdminReportes() {
+        return miVentanaAdminReportes;
+    }
+
+    public void setMiVentanaAdminReportes(VentanaAdminReportes miVentanaAdminReportes) {
+        this.miVentanaAdminReportes = miVentanaAdminReportes;
+    }
+
+    public ReporteItems getMiReporteItems() {
+        return miReporteItems;
+    }
+
+    public void setMiReporteItems(ReporteItems miReporteItems) {
+        this.miReporteItems = miReporteItems;
+    }
+
+    public ReporteTipos getMiReporteTipos() {
+        return miReporteTipos;
+    }
+
+    public void setMiReporteTipos(ReporteTipos miReporteTipos) {
+        this.miReporteTipos = miReporteTipos;
+    }
+
+    public ReporteCategorias getMiReporteCategorias() {
+        return miReporteCategorias;
+    }
+
+    public void setMiReporteCategorias(ReporteCategorias miReporteCategorias) {
+        this.miReporteCategorias = miReporteCategorias;
+    }
 }

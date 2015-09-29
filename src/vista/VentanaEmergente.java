@@ -41,5 +41,9 @@ public class VentanaEmergente extends JDialog{
     public void setCoordinador(Coordinador coordinador) {
         this.miCoordinador = coordinador;
     }
+    
+    public JPanel getPanel(){
+        return panel;
+    }
 
 }

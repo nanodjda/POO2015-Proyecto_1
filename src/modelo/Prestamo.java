@@ -9,6 +9,7 @@ package modelo;
 import controlador.Principal;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Date;
 
 /**
  * @author Arturo 19/09/2015
@@ -19,15 +20,24 @@ public class Prestamo implements Serializable {
     /************** Variables **************/
     private final int idPrestamo;
     private Persona persona;
-    private ArrayList<String> items = new ArrayList();
+    private ArrayList<Item> items = new ArrayList();
     private Alerta alerta;
 
     /************* Constructor *************/
-    public Prestamo(Persona pPersona){
+    public Prestamo(Persona pPersona, Date pFecha_final){
         this.persona = pPersona;
         Principal.idGlobalPrestamo += 1;
         this.idPrestamo = Principal.idGlobalPrestamo;
         persona.agregarPrestamo(this.idPrestamo);
+        this.alerta = new Alerta(pFecha_final);
+    }
+    
+    public Prestamo(Persona pPersona, int cantidad_dias){
+        this.persona = pPersona;
+        Principal.idGlobalPrestamo += 1;
+        this.idPrestamo = Principal.idGlobalPrestamo;
+        persona.agregarPrestamo(this.idPrestamo);
+        this.alerta = new Alerta(cantidad_dias);
     }
 
     /****************Metodos****************/
@@ -37,34 +47,24 @@ public class Prestamo implements Serializable {
         return idPrestamo;
     }
 
-    public ArrayList<String> getItems() {
+    public ArrayList<Item> getItems() {
         return items;
     }
 
-    public void agregarItem(String pItem) {
+    public void agregarItem(Item pItem) {
         items.add(pItem);
-        for(Item it : Principal.getItems()){
-            if(it.getCodigo().equals(pItem)){
-                it.prestado();
-            }
-        }
+        pItem.setPoseedor(this.persona);
+        pItem.prestado();
     }
     
-    public void borrarItem(String pItem) {
+    public void borrarItem(Item pItem) {
         items.remove(pItem);
-        for(Item it : Principal.getItems()){
-            if(it.getCodigo().equals(pItem)){
-                it.noPrestado();
-            }
-        }
+        pItem.setPoseedor(null);
+        pItem.noPrestado();
     }
 
     public Alerta getAlerta() {
         return alerta;
-    }
-
-    public void setAlerta(Alerta alerta) {
-        this.alerta = alerta;
     }
 
     public Persona getPersona() {

@@ -11,17 +11,24 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Locale;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
+import javax.swing.JTable;
 import javax.swing.JTextField;
+import javax.swing.table.DefaultTableModel;
+import modelo.Item;
 import modelo.Persona;
 import modelo.Prestamo;
 import vista.VentanaEmergente;
 import vista.PLabel;
+import static vista.Reportes.ReporteItems.ordenarItems;
 
 /**
  *
@@ -33,6 +40,14 @@ public class verPersona extends VentanaEmergente{
     private JTextField txtNombre, txtPrimer, txtSegundo, txtCedula, txtTelefono, txtCorreo;
     private JComboBox cmbItems;
     private JScrollPane scrPrestamos;
+    private JTable table;
+    String[] columnNames = {"Item",
+                        "Descripcion",
+                        "ID Prestamo",
+                        "Fecha Final"};
+    Object[][] data = {};
+    private DefaultTableModel dtm = new DefaultTableModel(data, columnNames);
+    SimpleDateFormat formatoFecha = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault());
 
     /************* Constructor *************/
 
@@ -49,8 +64,6 @@ public class verPersona extends VentanaEmergente{
         txtTelefono = new JTextField(pPersona.getTelefono(), 20);
         txtCorreo = new JTextField(pPersona.getCorreo(), 20);
         cmbItems = new JComboBox();
-        
-        
         
         txtNombre.enable(false);
         txtNombre.setDisabledTextColor(Color.black);
@@ -71,6 +84,7 @@ public class verPersona extends VentanaEmergente{
         JLabel lblCedula = new PLabel("Cédula:");
         JLabel lblTelefono = new PLabel("Telefono:");
         JLabel lblCorreo = new PLabel("Correo:");
+        JLabel lblPrestamo = new PLabel("Préstamos:");
         
         titulo.setBounds(250, 15, 350, 50);
         lblNombre.setBounds(10, 100, 100, 30);
@@ -85,7 +99,14 @@ public class verPersona extends VentanaEmergente{
         txtTelefono.setBounds(170, 200, 150, 30);
         lblCorreo.setBounds(330, 170, 100, 30);
         txtCorreo.setBounds(330, 200, 220, 30);
+        lblPrestamo.setBounds(10, 240, 100, 30);
         
+        cargarDatos(pPersona);
+        
+        table = new JTable(dtm);
+        table.setFillsViewportHeight(true);
+        JScrollPane scrollPane = new JScrollPane(table);
+        scrollPane.setBounds(10, 280, 600, 100);
         
         JButton aceptar = new JButton("Aceptar");
         aceptar.setBounds(540, 450, 100, 30);
@@ -110,6 +131,8 @@ public class verPersona extends VentanaEmergente{
         add(txtTelefono);
         add(lblCorreo);
         add(txtCorreo);
+        add(lblPrestamo);
+        add(scrollPane);
         add(aceptar);
     }
     
@@ -123,6 +146,26 @@ public class verPersona extends VentanaEmergente{
         txtTelefono.setText("");
         txtCorreo.setText("");
     }
+    
+    public void cargarDatos(Persona pPersona){
+        dtm.setRowCount(0);
+        for(Item pItem : Principal.getItems()){
+            if(pItem.getPoseedor().equals(pPersona) && pItem.getEstado() == true){
+                String txt1 = pItem.getNombre();
+                String txt2 = pItem.getDescripcion();
+                String txt3 = "";
+                String txt4 = "";
+                for(Prestamo p : Principal.getPrestamos()){
+                    if(p.getItems().contains(pItem)){
+                        txt3 = String.valueOf(p.getIdPrestamo());
+                        txt4 = formatoFecha.format(p.getAlerta().getFec_fin());
+                    }
+                }
+                Object[] newRow={txt1, txt2, txt3, txt4};
+                dtm.addRow(newRow);
+            }
+        }
+    }    
     
     /*********** Getters/Setters ***********/
 

@@ -15,6 +15,7 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import vista.BotonFondo;
+import vista.PLabel;
 import vista.VentanaBase;
 
 /**
@@ -35,19 +36,19 @@ public class VentanaAdminReportes extends VentanaBase {
         titulo.setBounds(250, 25, 200, 50);
         add(titulo);
         
-        usuario = new BotonFondo("reportPersona.png", 100, 100, 150, 150);
+        JLabel lblPersona = new PLabel("Reporte de Personas");
+        lblPersona.setBounds(100, 130, 150, 40);
+        add(lblPersona);
+        usuario = new BotonFondo("reportPersona.png", 100, 150, 150, 150);
         usuario.addActionListener(new ActionListener() {
             @Override
-            
             public void actionPerformed(ActionEvent e) {
                 try {
                     if(Principal.getPersonas().isEmpty()){
-                        throw new Exception("No hay personas para dar prestamos.");
-                    } else if(Principal.getItems().isEmpty()){
-                        throw new Exception("No hay items para dar prestamos.");
+                        throw new Exception("No hay personas para mostrar.");
                     }
-                    miCoordinador.getMiAgregarPrestamo().limpiar();
-                    miCoordinador.getMiVentanaPrincipal().setPrincipal(miCoordinador.getMiAgregarPrestamo());
+                    miCoordinador.getMiMostrarPersona().iniciar();
+                    miCoordinador.getMiVentanaPrincipal().setPrincipal(miCoordinador.getMiMostrarPersona());
                 } catch (Exception d) {
                     JOptionPane.showMessageDialog(miCoordinador.getMiVentanaPrincipal(), d.getMessage());
                 }
@@ -55,53 +56,42 @@ public class VentanaAdminReportes extends VentanaBase {
         });
         add(usuario);
         
-        item = new BotonFondo("reportItem.png", 400, 100, 150, 150);
+        
+        JLabel lblItems = new PLabel("Reporte de Items");
+        lblItems.setBounds(410, 130, 150, 40);
+        add(lblItems);
+        item = new BotonFondo("reportItem.png", 400, 150, 150, 150);
         item.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                try {
-                    if(Principal.getPrestamos().isEmpty()){
-                        throw new Exception("No hay prestamos para editar.");
-                    }
-                    miCoordinador.getMiModificarPrestamo().iniciar();
-                    miCoordinador.getMiVentanaPrincipal().setPrincipal(miCoordinador.getMiModificarPrestamo());
-                } catch (Exception d) {
-                    JOptionPane.showMessageDialog(miCoordinador.getMiVentanaPrincipal(), d.getMessage());
-                }
+                miCoordinador.getMiReporteItems().iniciar();
+                miCoordinador.getMiVentanaPrincipal().setPrincipal(miCoordinador.getMiReporteItems());
             }
         });
         add(item);
         
-        categoria = new BotonFondo("deletePrestamo.png", 100, 300, 150, 150);
+        JLabel lblTipos = new PLabel("Reporte de Tipos");
+        lblTipos.setBounds(110, 300, 150, 40);
+        add(lblTipos);
+        categoria = new BotonFondo("report.png", 100, 320, 150, 150);
         categoria.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                try {
-                    if(Principal.getPrestamos().isEmpty()){
-                        throw new Exception("No hay prestamos para eliminar.");
-                    }
-                    miCoordinador.getMiEliminarPrestamo().iniciar();
-                    miCoordinador.getMiVentanaPrincipal().setPrincipal(miCoordinador.getMiEliminarPrestamo());
-                } catch (Exception d) {
-                    JOptionPane.showMessageDialog(miCoordinador.getMiVentanaPrincipal(), d.getMessage());
-                }
+                miCoordinador.getMiReporteTipos().iniciar();
+                miCoordinador.getMiVentanaPrincipal().setPrincipal(miCoordinador.getMiReporteTipos());
             }
         });
         add(categoria);
         
-        tipo = new BotonFondo("report.png", 400, 300, 150, 150);
+        JLabel lblCategorias = new PLabel("Reporte de Categorias");
+        lblCategorias.setBounds(390, 300, 200, 40);
+        add(lblCategorias);
+        tipo = new BotonFondo("report.png", 400, 320, 150, 150);
         tipo.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                try {
-                    if(Principal.getPrestamos().isEmpty()){
-                        throw new Exception("No hay prestamos para mostrar.");
-                    }
-                    miCoordinador.getMiMostrarPrestamo().iniciar();
-                    miCoordinador.getMiVentanaPrincipal().setPrincipal(miCoordinador.getMiMostrarPrestamo());
-                } catch (Exception d) {
-                    JOptionPane.showMessageDialog(miCoordinador.getMiVentanaPrincipal(), d.getMessage());
-                }
+                miCoordinador.getMiReporteCategorias().iniciar();
+                miCoordinador.getMiVentanaPrincipal().setPrincipal(miCoordinador.getMiReporteCategorias());
             }
         });
         add(tipo);

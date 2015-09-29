@@ -66,6 +66,8 @@ public class ModificarItems extends VentanaEmergente{
         
         txtNombre = new JTextField(pItem.getNombre(), 20);
         txtCodigo = new JTextField(pItem.getCodigo(), 20);
+        txtCodigo.enable(false);
+        txtCodigo.setDisabledTextColor(Color.black);
         txtDescr = new JTextArea(pItem.getDescripcion());
         JScrollPane scrDescr = new JScrollPane(txtDescr);
         cmbTipo = new JComboBox();
@@ -146,7 +148,6 @@ public class ModificarItems extends VentanaEmergente{
         
     public void validar() throws Exception{
         if(txtNombre.getText().equals("")
-                || txtCodigo.getText().equals("")
                 || cmbTipo.getSelectedObjects().length == 0){
             throw new Exception("Debe llenar los campos obligatorios");
         }

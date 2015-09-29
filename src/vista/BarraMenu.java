@@ -6,6 +6,7 @@
 
 package vista;
 
+import controlador.Coordinador;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JMenu;
@@ -19,7 +20,11 @@ import javax.swing.JMenuItem;
 public class BarraMenu extends JMenuBar{
 
     /************** Variables **************/
+    
+    private Coordinador miCoordinador;
+    
     private JMenu archivo = new JMenu("Archivo");
+    private JMenuItem alertas = new JMenuItem("Alertas");
     private JMenuItem mSalir = new JMenuItem("Salir");
     
     /************* Constructor *************/
@@ -30,12 +35,25 @@ public class BarraMenu extends JMenuBar{
                 System.exit(0);
             }
         });
+        
+        alertas.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent arg0) {
+                miCoordinador.getMiLogica().revisarAlertas();
+            }
+        });
+        
+        archivo.add(alertas);
         archivo.add(mSalir);
+        
         
     }
     
     /****************Metodos****************/
 
     /*********** Getters/Setters ***********/
+    
+    public void setCoordinador(Coordinador pCoordinador){
+        this.miCoordinador = pCoordinador;
+    }
 
 }

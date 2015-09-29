@@ -15,9 +15,6 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 import controlador.Principal;
-import java.util.Dictionary;
-import java.util.Hashtable;
-import java.util.List;
 import javax.swing.DefaultListModel;
 import javax.swing.JComboBox;
 import javax.swing.JList;
@@ -124,7 +121,9 @@ public class AgregarItem extends VentanaBase{
     /****************Metodos****************/
     public void limpiarComponentes(){
         txtNombre.setText("");
-        txtCodigo.setText("");
+        txtCodigo.setText(String.valueOf(Principal.idGlobalItem + 1));
+        txtCodigo.enable(false);
+        txtCodigo.setDisabledTextColor(Color.black);
         txtDescr.setText("");
         cmbTipo.removeAllItems();
         for(Tipo pTipo : Principal.getTipos()) {
@@ -141,7 +140,6 @@ public class AgregarItem extends VentanaBase{
 
     public void validar() throws Exception{
         if(txtNombre.getText().equals("")
-                || txtCodigo.getText().equals("")
                 || cmbTipo.getSelectedObjects().length == 0){
             throw new Exception("Debe llenar los campos obligatorios");
         }

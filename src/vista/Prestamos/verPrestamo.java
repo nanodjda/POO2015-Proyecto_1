@@ -37,8 +37,6 @@ public class verPrestamo extends VentanaEmergente {
     private JTextField txtPersona;
     private JScrollPane scrItems;
     private Persona seleccionado;
-    private Dictionary items = new Hashtable();
-    int pos = 0;
 
     /************* Constructor *************/
     
@@ -50,12 +48,8 @@ public class verPrestamo extends VentanaEmergente {
         titulo.setFont(new Font("Arial", Font.BOLD, 25));
         
         DefaultListModel model = new DefaultListModel();
-        for(Item ite : Principal.getItems()) {
-            if(pPrestamo.getItems().contains(ite.getCodigo())){
-                model.addElement(ite.getNombre());
-                items.put(pos, ite.getCodigo());
-                pos += 1;
-            }
+        for(Item ite : pPrestamo.getItems()) {
+            model.addElement(ite.getNombre());
         }
         
         cmbItems = new JList(model);
@@ -70,12 +64,23 @@ public class verPrestamo extends VentanaEmergente {
         
         JLabel lblNombre = new PLabel("Persona:");
         JLabel lblItems = new PLabel("Items:");
+        JLabel lblAlerta = new PLabel("Alerta:");
+        JLabel lblAlertaTipo = new PLabel(pPrestamo.getAlerta().getTipo());
+        JLabel lblAlertaCara;
+        if(pPrestamo.getAlerta().getTipo().equals("Recurrente")){
+            lblAlertaCara = new PLabel("Próx: " + pPrestamo.getAlerta().diafinal());
+        } else {
+            lblAlertaCara = new PLabel("Vence: " + pPrestamo.getAlerta().diafinal());
+        }
         
         titulo.setBounds(250, 15, 350, 50);
         lblNombre.setBounds(10, 100, 100, 30);
         txtPersona.setBounds(10, 140, 300, 30);
         lblItems.setBounds(320, 100, 100, 30);
         scrItems.setBounds(320, 140, 100, 100);
+        lblAlerta.setBounds(10, 180, 100, 30);
+        lblAlertaTipo.setBounds(70, 180, 150, 30);
+        lblAlertaCara.setBounds(70, 210, 150, 30);
         
         JButton aceptar = new JButton("Aceptar");
         aceptar.setBounds(540, 450, 100, 30);
@@ -92,6 +97,9 @@ public class verPrestamo extends VentanaEmergente {
         add(txtPersona);
         add(scrItems);
         add(lblItems);
+        add(lblAlerta);
+        add(lblAlertaTipo);
+        add(lblAlertaCara);
         add(aceptar);
         
     }

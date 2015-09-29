@@ -52,9 +52,9 @@ public class EditarPrestamo extends VentanaEmergente {
         
         DefaultListModel model = new DefaultListModel();
         for(Item ite : Principal.getItems()) {
-            if(ite.getEstado() == false || pPrestamo.getItems().contains(ite.getCodigo())){
+            if(ite.getEstado() == false || pPrestamo.getItems().contains(ite)){
                 model.addElement(ite.getNombre());
-                items.put(pos, ite.getCodigo());
+                items.put(pos, ite);
                 pos += 1;
             }
         }
@@ -86,16 +86,12 @@ public class EditarPrestamo extends VentanaEmergente {
             public void actionPerformed(ActionEvent e) {
                 try {
                     validar();
-                    for(String str : pPrestamo.getItems()){
-                        for(Item it : Principal.getItems()){
-                            if(it.getCodigo().equals(str)){
-                                it.noPrestado();
-                            }
-                        }
+                    for(Item ite : pPrestamo.getItems()){
+                        ite.noPrestado();
                     }
                     pPrestamo.getItems().clear();
                     for(Integer x : cmbItems.getSelectedIndices()){
-                        pPrestamo.agregarItem(items.get(x).toString());
+                        pPrestamo.agregarItem((Item) items.get(x));
                     }
                     JOptionPane.showMessageDialog(getRootPane(), "El préstamo ha sido editado.");
                     dispose();

@@ -6,6 +6,7 @@
 
 package modelo;
 
+import controlador.Principal;
 import java.io.Serializable;
 import java.util.ArrayList;
 
@@ -21,13 +22,15 @@ public class Item implements Serializable{
     private String descripcion = "Sin descripcion";
     private Tipo tipo;
     private ArrayList<Categoria> categorias = new ArrayList<>();
+    private Persona poseedor;
     private boolean estado = false;
             
     /************* Constructor *************/
     public Item(String pNombre, String pCodigo, Tipo pTipo){
         this.nombre = pNombre;
-        this.codigo = pCodigo;
         this.tipo = pTipo;
+        this.codigo = String.valueOf(Principal.idGlobalItem + 1);
+        Principal.idGlobalItem += 1;
     }
 
     /****************Metodos****************/
@@ -90,4 +93,13 @@ public class Item implements Serializable{
     public void setTipo(Tipo pTipo){
         this.tipo = pTipo;
     }
+
+    public Persona getPoseedor() {
+        return poseedor;
+    }
+
+    public void setPoseedor(Persona poseedor) {
+        this.poseedor = poseedor;
+    }
+    
 }

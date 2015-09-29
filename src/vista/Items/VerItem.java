@@ -6,6 +6,7 @@
 
 package vista.Items;
 
+import controlador.Principal;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
@@ -49,11 +50,20 @@ public class VerItem extends VentanaEmergente{
         JLabel lblTipo = new PLabel("Tipo:");
         JLabel lblCate = new PLabel("Categorías:");
         JLabel lblEstado;
+        JLabel lblPoseedor;
                 
         if(pItem.getEstado()){
             lblEstado = new PLabel("Estado: Prestado");  
         } else {
             lblEstado = new PLabel("Estado: Disponible");
+        }
+        
+        if(pItem.getEstado()==true){
+            lblPoseedor = new PLabel("Actual poseedor: " + pItem.getPoseedor().getNombre() + " " +
+                    pItem.getPoseedor().getPrimerApellido() + " " +
+                    pItem.getPoseedor().getSegundoApellido());
+        } else {
+            lblPoseedor = new PLabel("Actual poseedor: Nadie");
         }
         
         txtNombre = new JTextField(pItem.getNombre(), 20);
@@ -81,6 +91,7 @@ public class VerItem extends VentanaEmergente{
         lblCate.setBounds(10, 290, 80, 30);
         scrCate.setBounds(110, 290, 150, 100);
         lblEstado.setBounds(270, 250, 150, 30);
+        lblPoseedor.setBounds(270, 280, 300, 30);
         
         aceptar = new JButton("Aceptar");
         aceptar.setBounds(540, 450, 100, 30);
@@ -96,6 +107,7 @@ public class VerItem extends VentanaEmergente{
         txtNombre.setDisabledTextColor(Color.black);
         txtCodigo.enable(false);
         txtCodigo.setDisabledTextColor(Color.black);
+        txtDescr.setDisabledTextColor(Color.black);
         txtDescr.enable(false);
         txtDescr.setDisabledTextColor(Color.black);
         txtTipo.enable(false);
@@ -113,6 +125,7 @@ public class VerItem extends VentanaEmergente{
         add(lblCate);
         add(scrCate);
         add(lblEstado);
+        add(lblPoseedor);
         add(aceptar);
         
         

@@ -32,24 +32,21 @@ public class EliminarPrestamo extends VentanaBase {
     
     /************* Constructor *************/
     public EliminarPrestamo(){
-        JLabel titulo = new JLabel("Eliminar Prestamo");
+        JLabel titulo = new JLabel("Finalizar Préstamo");
         titulo.setForeground(new Color(159, 227, 255));
         titulo.setFont(new Font("Arial", Font.BOLD, 25));
         
-        PLabel leyenda1 = new PLabel("Seleccione el préstamo a eliminar:");
+        PLabel leyenda1 = new PLabel("Seleccione el préstamo a finalizar:");
         cmbPrestamos = new JComboBox();
-        JButton eliminar = new JButton("Eliminar");
+        JButton eliminar = new JButton("Finalizar");
         eliminar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 int pos = cmbPrestamos.getSelectedIndex();
-                for(String str : Principal.getPrestamos().get(pos).getItems()){
-                    for(Item it : Principal.getItems()){
-                        if(it.getCodigo().equals(str)){
-                            it.noPrestado();
-                        }
-                    }
+                for(Item pItem : Principal.getPrestamos().get(pos).getItems()){
+                    pItem.noPrestado();
                 }
+                
                 Principal.getPrestamos().remove(pos);
                 JOptionPane.showMessageDialog(getRootPane(), "El préstamo ha sido eliminado.");
                 if(Principal.getPrestamos().size() > 0){
